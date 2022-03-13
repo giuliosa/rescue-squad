@@ -1,6 +1,7 @@
 extends Node2D
 
 const Player = preload("res://Scenes/Player.tscn")
+const Party = preload("res://Scenes/Party.tscn")
 const ExitDoor = preload("res://Scenes/ExitDoor.tscn")
 
 var borders = Rect2(1, 1, 38, 20)
@@ -14,11 +15,11 @@ func _ready():
 func generate_level():
 	var walker = Walker.new(Vector2(17, 10), borders)
 	# Increase the number passed in the walk function to get bigger rooms
-	var map = walker.walk(200)
+	var map = walker.walk(500)
 	
-	var player = Player.instance()
-	add_child(player)
-	player.position = map.front() * 32
+	var party = Party.instance()
+	add_child(party)
+	party.position = map.front() * 32
 	
 	var exitDoor = ExitDoor.instance()
 	add_child(exitDoor)
