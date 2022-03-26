@@ -13,11 +13,20 @@ script = ExtResource( 2 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 16, 0 )
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 16, 16 )
+[node name="Player4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 16 )
 
-[node name="Body" parent="Player2" index="0"]
-color = Color( 0.411765, 0.760784, 0.168627, 1 )
+[node name="Body" parent="Player4" index="0"]
+margin_top = -24.0
+margin_bottom = -8.0
+color = Color( 0.168627, 0.247059, 0.760784, 1 )
+
+[node name="Gun" parent="Player4" index="1"]
+margin_top = -18.0
+margin_bottom = -14.0
+
+[node name="CollisionShape2D" parent="Player4" index="2"]
+position = Vector2( 1, -16 )
 
 [node name="Player3" parent="." instance=ExtResource( 1 )]
 position = Vector2( -16, 32 )
@@ -38,20 +47,11 @@ margin_bottom = -14.0
 [node name="CollisionShape2D" parent="Player3" index="2"]
 position = Vector2( 16, 0 )
 
-[node name="Player4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 16 )
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16, 16 )
 
-[node name="Body" parent="Player4" index="0"]
-margin_top = -24.0
-margin_bottom = -8.0
-color = Color( 0.168627, 0.247059, 0.760784, 1 )
-
-[node name="Gun" parent="Player4" index="1"]
-margin_top = -18.0
-margin_bottom = -14.0
-
-[node name="CollisionShape2D" parent="Player4" index="2"]
-position = Vector2( 1, -32 )
+[node name="Body" parent="Player2" index="0"]
+color = Color( 0.411765, 0.760784, 0.168627, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 9, 13.5 )
@@ -60,6 +60,18 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[editable path="Player2"]
-[editable path="Player3"]
+[node name="ShootPositionRight" type="Position2D" parent="."]
+position = Vector2( 32, -2 )
+
+[node name="ShootPositionUp" type="Position2D" parent="."]
+position = Vector2( 0, -13 )
+
+[node name="ShootPositionLeft" type="Position2D" parent="."]
+position = Vector2( -24, 15 )
+
+[node name="ShootPositionDown" type="Position2D" parent="."]
+position = Vector2( 18, 30 )
+
 [editable path="Player4"]
+[editable path="Player3"]
+[editable path="Player2"]
