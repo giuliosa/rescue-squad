@@ -65,5 +65,5 @@ func get_end_room():
 	var starting_position = step_history.front()
 	for room in rooms:
 		if starting_position.distance_to(room.position) > starting_position.distance_to(end_room.position):
-			end_room = room			
+			end_room = room
 	return end_room
