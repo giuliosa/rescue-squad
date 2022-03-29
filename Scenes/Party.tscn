@@ -8,6 +8,7 @@ extents = Vector2( 15, 10.5 )
 
 [node name="Party" type="KinematicBody2D"]
 position = Vector2( 2, 9 )
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -57,9 +58,6 @@ color = Color( 0.411765, 0.760784, 0.168627, 1 )
 position = Vector2( 9, 13.5 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-
 [node name="ShootPositionRight" type="Position2D" parent="."]
 position = Vector2( 32, -2 )
 
@@ -71,6 +69,13 @@ position = Vector2( -24, 15 )
 
 [node name="ShootPositionDown" type="Position2D" parent="."]
 position = Vector2( 18, 30 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 3072
+limit_bottom = 1536
 
 [editable path="Player4"]
 [editable path="Player3"]

@@ -2,10 +2,12 @@ extends Node2D
 
 const Party = preload("res://Scenes/Party.tscn")
 const ExitDoor = preload("res://Scenes/ExitDoor.tscn")
+const Monster = preload("res://Scenes/Actors/Enemies/Minions/Ciclope.tscn")
 
-var borders = Rect2(1, 1, 38, 20)
+var borders = Rect2(1, 1, 97, 46)
 
 onready var tileMap = $TileMap
+onready var remoteTransform = $RemoteTransform2D
 
 func _ready():
 	randomize()
@@ -17,12 +19,21 @@ func generate_level():
 	var map = walker.walk(200)
 	
 	var party = Party.instance()
+	for i in range(20):
+		var monster = Monster.instance()
+		add_child(monster)
+		monster.position = walker.get_end_room().position * 32
+	
+		
+	
+	party.add_child(remoteTransform)
 	add_child(party)
 	party.position = map.front() * 32
 	
 	var exitDoor = ExitDoor.instance()
 	add_child(exitDoor)
 	exitDoor.position = walker.get_end_room().position * 32
+	
 	exitDoor.connect("leaving_level", self, "reload_level")
 	
 	walker.queue_free()
