@@ -8,6 +8,12 @@ const position2 = Vector2(16, 16)
 const position3 = Vector2(-16, 16)
 const position4 = Vector2(0, 32)
 
+const ACCELERATION = 600
+const MAX_SPEED = 120
+const FRICTION = 400
+
+var velocity = Vector2.ZERO
+
 onready var player1 = $Player
 onready var player2 = $Player2
 onready var player3 = $Player3
@@ -22,15 +28,25 @@ func _ready():
 	player_position.append(player4)
 	fix_look_direction()
 
-func _physics_process(_delta):
-	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	var y_input = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	move_and_slide(Vector2(x_input, y_input) * 100)
+func _physics_process(delta):
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
+		
+	if input_vector != Vector2.ZERO:
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("change_right"):
-		change_array_position("right")
+		#change_array_position("right")
+		pass
 	if Input.is_action_just_pressed("change_left"):
-		change_array_position("left")
+		#change_array_position("left")
+		pass
+		
 	
 	if Input.is_action_pressed("shoot_right"):
 		player_shoot($ShootPositionRight, "right")
