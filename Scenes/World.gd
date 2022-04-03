@@ -1,6 +1,6 @@
 extends Node2D
 
-const Party = preload("res://Scenes/Party.tscn")
+const Squad = preload("res://Scenes/Actors/Squad.tscn")
 const ExitDoor = preload("res://Scenes/ExitDoor.tscn")
 const Monster = preload("res://Scenes/Actors/Enemies/Minions/Ciclope.tscn")
 
@@ -18,7 +18,7 @@ func generate_level():
 	# Increase the number passed in the walk function to get bigger rooms
 	var map = walker.walk(200)
 	
-	var party = Party.instance()
+	var squad = Squad.instance()
 	for i in range(20):
 		var monster = Monster.instance()
 		add_child(monster)
@@ -26,9 +26,9 @@ func generate_level():
 	
 		
 	
-	party.add_child(remoteTransform)
-	add_child(party)
-	party.position = map.front() * 32
+	squad.add_child(remoteTransform)
+	add_child(squad)
+	squad.position = map.front() * 32
 	
 	var exitDoor = ExitDoor.instance()
 	add_child(exitDoor)

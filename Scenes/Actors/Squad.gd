@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const Player = preload("res://Scenes/Player.tscn")
+const Player = preload("res://Scenes/Actors/Player.tscn")
 const Shoot = preload("res://Scenes/Shoot.tscn")
 
 const position1 = Vector2(16, 0)
@@ -22,6 +22,7 @@ onready var player4 = $Player4
 var player_position = []
 
 func _ready():
+	# TODO: Create dinamically the players
 	player_position.append(player1)
 	player_position.append(player2)
 	player_position.append(player3)
@@ -41,11 +42,9 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("change_right"):
-		#change_array_position("right")
-		pass
+		change_array_position("right")
 	if Input.is_action_just_pressed("change_left"):
-		#change_array_position("left")
-		pass
+		change_array_position("left")
 		
 	
 	if Input.is_action_pressed("shoot_right"):
@@ -61,32 +60,26 @@ func change_array_position(direction):
 	if direction == "right":
 		var last = player_position.pop_back()
 		player_position.push_front(last)
-		move_to_right()
+		fix_player_position()
 		
 	elif direction == "left":
 		var last = player_position.pop_front()
 		player_position.push_back(last)
-		move_to_left()
+		fix_player_position()
 
-func move_to_right():
-	player_position[0].move_and_slide(Vector2(16, 0) * 60)
-	player_position[1].move_and_slide(Vector2(0, 16) * 60)
-	player_position[2].move_and_slide(Vector2(-16, 0) * 60)
-	player_position[3].move_and_slide(Vector2(0, -16) * 60)
+func fix_player_position():
+	player_position[0].position = $RightCharacter.position
+	player_position[1].position = $BottomCharacter.position
+	player_position[2].position = $LeftCharacter.position
+	player_position[3].position = $TopCharacter.position
 	fix_look_direction()
 
-func move_to_left():
-	player_position[0].move_and_slide(Vector2(0, -16) * 60)
-	player_position[1].move_and_slide(Vector2(16, 0) * 60)
-	player_position[2].move_and_slide(Vector2(0, 16) * 60)
-	player_position[3].move_and_slide(Vector2(-16, 0) * 60)
-	fix_look_direction()
 
 func fix_look_direction():
-	player_position[0].get_node("AnimationPlayer").play("look_right")
-	player_position[1].get_node("AnimationPlayer").play("look_down")
-	player_position[2].get_node("AnimationPlayer").play("look_left")
-	player_position[3].get_node("AnimationPlayer").play("look_up")
+	player_position[0].get_node("AnimationPlayer").play("LookRight")
+	player_position[1].get_node("AnimationPlayer").play("LookDown")
+	player_position[2].get_node("AnimationPlayer").play("LookLeft")
+	player_position[3].get_node("AnimationPlayer").play("LookUp")
 
 func player_shoot(shoot_position, direction):
 	var shoot = Shoot.instance()
