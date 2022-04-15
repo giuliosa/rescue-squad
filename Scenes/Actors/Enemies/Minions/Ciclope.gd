@@ -27,10 +27,12 @@ onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
 
 
-func _ready():
+func _ready():	
+	$Life.text = str(stats.max_health)
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
+	$Life.text = str(stats.health)
 	knockback = knockback.move_toward(Vector2.ZERO, delta * FRICTION)
 	knockback = move_and_slide(knockback)
 	
@@ -83,7 +85,12 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 
 func _on_Hurtbox_area_entered(area):
-	stats.health -= area.damage
+	print(area.shoot_type)
+	match(area.shoot_type):
+		'Soldier':
+			stats.health -= area.damage * 3
+		_:
+			stats.health -= area.damage
 	knockback = area.knockback_vector * 120
 	hurtbox.create_hit_effect()
 	hurtbox.start_invicibility(0.4)	

@@ -120,18 +120,20 @@ func fix_look_direction():
 	player_position[3].get_node("AnimationPlayer").play("IdleUp")
 
 func player_shoot(shoot_position, direction):
-	# TODO: Make a weapon scene which deals with the shooting type 
-	var shoot = Shoot.instance()
+	var attack
 	if direction == "right":
-		shoot.set_shoot_direction(1, 0)
-	elif direction == "left":
-		shoot.set_shoot_direction(-1, 0)
-	elif direction == "up":
-		shoot.set_shoot_direction(0, -1)
-	elif direction == "down":
-		shoot.set_shoot_direction(0, 1)
+		attack = player_position[0].attack("right")
 		
-	get_parent().add_child(shoot)
-	shoot.position = shoot_position.global_position
+	elif direction == "left":
+		attack = player_position[2].attack("left")
+		
+	elif direction == "up":
+		attack = player_position[3].attack("up")
+		
+	elif direction == "down":
+		attack = player_position[1].attack("down")
+		
+	get_parent().add_child(attack)
+	attack.position = shoot_position.global_position
 
 
