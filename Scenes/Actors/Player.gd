@@ -1,6 +1,10 @@
 extends KinematicBody2D
 
 const Shoot = preload("res://Scenes/Shoot.tscn")
+const Sword = preload("res://Scenes/Effects/Attacks/Sword.tscn")
+const Shuriken = preload("res://Scenes/Effects/Attacks/Shots/shuriken.tscn")
+const IceAttack = preload("res://Scenes/Effects/Attacks/Special/ice.tscn")
+
 
 export(String) var character_name = ""
 export(String) var role_name = ""
@@ -12,8 +16,8 @@ var attack
 func create_character(role):
 	match role:
 		'soldier':
-			character_name = "Soldier"
-			role_name = "Soldier"
+			character_name = "soldier"
+			role_name = "soldier"
 			max_health = 3
 			max_mana = 2
 			armor = 3
@@ -56,23 +60,28 @@ func create_character(role):
 			return self
 
 func attack(direction):
-	var shoot = Shoot.instance()
-	shoot.shoot_type = role_name
-	shoot.damage = attack
+	var shoot 
+	
 	match role_name:
 		'soldier':
+			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 1
 			
 		'nanotechinician':
+			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 2
 			
 		'combat_medic':
+			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 3
 			
 		'ninja':
-			shoot.get_node("ColorRect").frame = 4
+			shoot = Shuriken.instance()
+	
+	shoot.shoot_type = role_name
+	shoot.damage = attack
 			
-	if direction == "right":
+	if direction == "right":		
 		shoot.set_shoot_direction(1, 0)
 		
 	elif direction == "left":
@@ -83,5 +92,23 @@ func attack(direction):
 		
 	elif direction == "down":
 		shoot.set_shoot_direction(0, 1)
-	
+		
 	return shoot
+
+func special_attack(direction):
+	var special
+	
+	match role_name:
+		'soldier':
+			pass
+			
+		'nanotechinician':
+			special = IceAttack.instance()
+			
+		'combat_medic':
+			pass
+			
+		'ninja':
+			pass
+	
+	return special
