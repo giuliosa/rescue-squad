@@ -27,10 +27,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Rescue Squad"
-run/main_scene="res://Scenes/TitleScreen.tscn"
+run/main_scene="res://Scenes/Menu/TitleScreen.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
+
+[autoload]
+
+SquadPosition="*res://Scenes/Shared/SquadPosition.gd"
 
 [display]
 
