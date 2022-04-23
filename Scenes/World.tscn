@@ -648,4 +648,4 @@ rect_pivot_offset = Vector2( 512, 96 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.00392157, 0.0392157, 0.0666667, 1 )
+color = Color( 0.0196078, 0.156863, 0.12549, 1 )

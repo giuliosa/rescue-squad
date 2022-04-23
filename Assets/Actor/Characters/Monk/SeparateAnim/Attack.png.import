@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/29cc4752bcf136473cadfc1fffab6bbb.jpg-85a014b169e365c8c5b28d761ca7c9d8.stex"
+path="res://.import/Attack.png-5a6c44b02dc3c9f029ae64f622d5dd0e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/29cc4752bcf136473cadfc1fffab6bbb.jpg"
-dest_files=[ "res://.import/29cc4752bcf136473cadfc1fffab6bbb.jpg-85a014b169e365c8c5b28d761ca7c9d8.stex" ]
+source_file="res://Assets/Actor/Characters/Monk/SeparateAnim/Attack.png"
+dest_files=[ "res://.import/Attack.png-5a6c44b02dc3c9f029ae64f622d5dd0e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

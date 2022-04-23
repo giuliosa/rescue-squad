@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://ClassStats.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Actor/Characters/Villager2/Faceset.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+class_type = "Soldier"
+health = 2
+damage = 4
+mana = 1
+armor = 3
+profile = ExtResource( 2 )
