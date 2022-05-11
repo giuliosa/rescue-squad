@@ -87,22 +87,12 @@ func _physics_process(delta):
 	
 		
 func put_players_into_squad():
-	var soldier = Player.instance()
-	soldier.create_character('soldier')
-	var ninja = Player.instance()
-	ninja.create_character('ninja')
-	var combat_medic = Player.instance()
-	combat_medic.create_character('combat_medic')
-	var nanotechinician = Player.instance()
-	nanotechinician.create_character('nanotechinician')
-	add_child(soldier)
-	add_child(ninja)
-	add_child(combat_medic)
-	add_child(nanotechinician)
-	player_position.append(soldier)
-	player_position.append(ninja)
-	player_position.append(combat_medic)
-	player_position.append(nanotechinician)
+	print(SquadPosition.position)
+	for i in SquadPosition.position:
+		var createad_player = Player.instance()
+		createad_player.create_character(i)
+		add_child(createad_player)
+		player_position.append(createad_player)
 	
 func change_array_position(direction):
 	if direction == "right":

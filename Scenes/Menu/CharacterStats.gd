@@ -12,6 +12,7 @@ func _ready():
 	update_class_display(class_data)
 	
 func update_class_display(class_data):
+	print(class_data)
 	profile_image.texture = class_data.profile
 	class_label.text = class_data.class_type
 	health_label.text = String(class_data.health)
