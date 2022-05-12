@@ -28,27 +28,27 @@ func attack(direction):
 	var shoot 
 	
 	match role_name:
-		'Infantry Soldier':
+		CharacterClasses.Classes.SOLDIER:
 			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 1
 			
-		'Nanotechinician':
+		CharacterClasses.Classes.NANOTECH:
 			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 2
 			
-		'Combat Medic':
+		CharacterClasses.Classes.COMBAT_MEDIC:
 			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 3
 
-		'Samurai':
+		CharacterClasses.Classes.SAMURAI:
 			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 4
 
-		'Monk':
+		CharacterClasses.Classes.MONK:
 			shoot = Shoot.instance()
 			shoot.get_node("ColorRect").frame = 5
 			
-		'Ninja':
+		CharacterClasses.Classes.NINJA:
 			shoot = Shuriken.instance()
 	
 	shoot.shoot_type = role_name
@@ -72,22 +72,22 @@ func special_attack(direction):
 	var special
 	
 	match role_name:
-		'Infantry Soldier':
+		CharacterClasses.Classes.SOLDIER:
 			pass
 			
-		'Nanotechinician':
+		CharacterClasses.Classes.NANOTECH:
 			special = IceAttack.instance()
 			
-		'Combat Medic':
+		CharacterClasses.Classes.COMBAT_MEDIC:
 			pass
 			
-		'Ninja':
+		CharacterClasses.Classes.NINJA:
 			pass
 
-		'Monk':
+		CharacterClasses.Classes.MONK:
 			pass
 
-		'Samurai':
+		CharacterClasses.Classes.SAMURAI:
 			pass
 	
 	return special

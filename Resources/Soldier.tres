@@ -6,8 +6,9 @@
 
 [resource]
 script = ExtResource( 1 )
-class_type = "Infantry Soldier"
-health = 2
+class_type = "soldier"
+character_name = "Condar Cullier"
+health = 0
 damage = 4
 mana = 1
 armor = 3

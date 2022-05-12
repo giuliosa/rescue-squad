@@ -35,6 +35,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SquadPosition="*res://Scenes/Shared/SquadPosition.gd"
+CharacterClasses="*res://Scenes/Shared/CharacterClasses.gd"
 
 [display]
 

@@ -6,11 +6,12 @@
 
 [resource]
 script = ExtResource( 1 )
-class_type = "Monk"
+class_type = "monk"
+character_name = "Dhellon Maipham"
 health = 4
 damage = 3
-mana = 2
-armor = 1
+mana = 1
+armor = 2
 profile = ExtResource( 2 )
 animation = ExtResource( 3 )
 weapon_frame = 5

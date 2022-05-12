@@ -6,10 +6,11 @@
 
 [resource]
 script = ExtResource( 1 )
-class_type = "Samurai"
-health = 2
+class_type = "samurai"
+character_name = "Antomba Fampler"
+health = 0
 damage = 4
-mana = 2
+mana = 0
 armor = 3
 profile = ExtResource( 2 )
 animation = ExtResource( 3 )
