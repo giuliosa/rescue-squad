@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/hud/PixelOperatorMono-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Hud/arrow.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Hud/dialogue-bubble.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Hud/faceset-box.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 285.355, 32.041 ), Vector2( 285.355, 30 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DialogBox" type="Control" parent="."]
+margin_left = 14.0
+margin_top = 297.0
+margin_right = 629.0
+margin_bottom = 335.0
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+anchor_left = 0.505
+anchor_top = 1.0
+anchor_right = 0.505
+anchor_bottom = 1.0
+margin_left = -300.575
+margin_top = -39.0
+margin_right = 300.425
+margin_bottom = 10.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = -76.0
+margin_bottom = -4.0
+custom_colors/default_color = Color( 0.243137, 0.113725, 0.0431373, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_text = "Hello there! Isso é um teste de texto? Como você está?"
+text = "Hello there! Isso é um teste de texto? Como você está?"
+scroll_active = false
+
+[node name="arrow" type="Sprite" parent="DialogBox"]
+position = Vector2( 586, 32 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/arrow"]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+
+[node name="faceset-box" type="Sprite" parent="DialogBox"]
+position = Vector2( 553, -5.00001 )
+texture = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[node name="faceset" type="Sprite" parent="DialogBox"]
+position = Vector2( 262.256, -5.61713 )
+
+[connection signal="tween_all_completed" from="DialogBox/Tween" to="DialogBox" method="_on_Tween_tween_all_completed"]
