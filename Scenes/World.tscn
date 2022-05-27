@@ -1,9 +1,10 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://Scenes/Walker.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/RandomLevelGenTileset.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/World.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Tileset/tileset x1.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Menu/PortraitInfo.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=49]
 0/name = "tileset x1.png 0"
@@ -647,5 +648,12 @@ margin_bottom = 361.0
 rect_pivot_offset = Vector2( 512, 96 )
 color = Color( 0, 0, 0, 1 )
 
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 643.0
+margin_bottom = 360.0
+
+[node name="PortraitInfo" parent="CanvasLayer/Control" instance=ExtResource( 5 )]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.0196078, 0.156863, 0.12549, 1 )
