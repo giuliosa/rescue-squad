@@ -50,14 +50,10 @@ func _process(delta):
 				$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer.remove_child($Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect)
 				$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer.add_child(stats)
 				stats.update_class_display(soldier)
-		print(button_control)
 	
 	if (SquadPosition.position.size() == 4):
 		disable_all_buttons()
 		
-	#if (SquadPosition.position.size() > 0):
-	#	add_character_to_selected_view()
-	
 	for i in SquadPosition.position.size():
 		match(i):
 			0:
@@ -72,10 +68,6 @@ func _process(delta):
 			3:
 				$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/Forth/Image.texture = SquadPosition.position[3].profile
 				$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/Forth/Name.text = SquadPosition.position[3].class_type
-		
-				
-		print(i)
-		
 	
 func _on_focus_changed(control:Control):
 	if control != null:

@@ -10,7 +10,6 @@ onready var tileMap = $TileMap
 onready var remoteTransform = $RemoteTransform2D
 
 func _ready():
-	print(SquadPosition.position)
 	randomize()
 	generate_level()
 	

@@ -87,7 +87,6 @@ func _physics_process(delta):
 	
 		
 func put_players_into_squad():
-	print(SquadPosition.position)
 	for i in SquadPosition.position:
 		var createad_player = Player.instance()
 		createad_player.create_character(i)
