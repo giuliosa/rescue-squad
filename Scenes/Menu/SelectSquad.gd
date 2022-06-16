@@ -50,7 +50,20 @@ func _process(delta):
 				$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer.remove_child($Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect)
 				$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer.add_child(stats)
 				stats.update_class_display(soldier)
-	
+	if Input.is_action_just_pressed("shoot_left"):
+		match(button_control):
+			"CombatMedic":
+				_on_CombatMedic_pressed()
+			"Monk":
+				_on_Monk_pressed()
+			"Nanothechinician":
+				_on_Nanothechinician_pressed()
+			"Ninja":
+				_on_Ninja_pressed()
+			"Samurai":
+				_on_Samurai_pressed()
+			"Soldier":
+				_on_Soldier_pressed()
 	if (SquadPosition.position.size() == 4):
 		disable_all_buttons()
 		
@@ -78,7 +91,7 @@ func _on_BackButton_pressed():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://Scenes/World.tscn")
+	get_tree().change_scene("res://Scenes/FrontDoor.tscn")
 
 func _on_CombatMedic_pressed():
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/CombatMedic.disabled = true
@@ -130,4 +143,4 @@ func disable_all_buttons():
 
 func add_character_to_selected_view():
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/First/Image.texture = SquadPosition.position[0].profile
-	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/First/Name.text = SquadPosition.position[0].class_type
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/First/Name.text = SquadPosition.position[0].character_name

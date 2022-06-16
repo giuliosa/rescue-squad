@@ -51,39 +51,39 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("change_left"):
 		change_array_position("left")
 		
-	if Input.is_action_pressed("special_attack"):
-		if Input.is_action_just_pressed("shoot_right"):
-			player_special_attack($ShootPositionRight, "right")
-			player_position[0].get_node("AnimationPlayer").play("SpecialAttack")
+	#if Input.is_action_pressed("special_attack"):
+	#	if Input.is_action_just_pressed("shoot_right"):
+	#		player_special_attack($ShootPositionRight, "right")
+	#		player_position[0].get_node("AnimationPlayer").play("SpecialAttack")
 			
-		if Input.is_action_just_pressed("shoot_up"):
-			player_special_attack($ShootPositionUp, "up")
-			player_position[3].get_node("AnimationPlayer").play("SpecialAttack")
+	#	if Input.is_action_just_pressed("shoot_up"):
+	#		player_special_attack($ShootPositionUp, "up")
+	#		player_position[3].get_node("AnimationPlayer").play("SpecialAttack")
 			
-		if Input.is_action_just_pressed("shoot_left"):
-			player_special_attack($ShootPositionLeft, "left")
-			player_position[2].get_node("AnimationPlayer").play("SpecialAttack")
+	#	if Input.is_action_just_pressed("shoot_left"):
+	#		player_special_attack($ShootPositionLeft, "left")
+	#		player_position[2].get_node("AnimationPlayer").play("SpecialAttack")
 			
-		if Input.is_action_just_pressed("shoot_down"):
-			player_special_attack($ShootPositionDown, "down")
-			player_position[1].get_node("AnimationPlayer").play("SpecialAttack")
-	else:
-		if Input.is_action_just_pressed("shoot_right"):
-			player_shoot($ShootPositionRight, "right")
-			player_position[0].get_node("AnimationPlayer").play("ShootRight")
-			
-		if Input.is_action_just_pressed("shoot_up"):
-			player_shoot($ShootPositionUp, "up")
-			player_position[3].get_node("AnimationPlayer").play("ShootUp")
-			
-		if Input.is_action_just_pressed("shoot_left"):
-			player_shoot($ShootPositionLeft, "left")
-			player_position[2].get_node("AnimationPlayer").play("ShootLeft")
-			
-		if Input.is_action_just_pressed("shoot_down"):
-			player_shoot($ShootPositionDown, "down")
-			player_position[1].get_node("AnimationPlayer").play("ShootDown")
+	#	if Input.is_action_just_pressed("shoot_down"):
+	#		player_special_attack($ShootPositionDown, "down")
+	#		player_position[1].get_node("AnimationPlayer").play("SpecialAttack")
+	#else:
+	if Input.is_action_just_pressed("shoot_right"):
+		player_shoot($ShootPositionRight, "right")
+		player_position[0].get_node("AnimationPlayer").play("ShootRight")
 		
+	if Input.is_action_just_pressed("shoot_up"):
+		player_shoot($ShootPositionUp, "up")
+		player_position[3].get_node("AnimationPlayer").play("ShootUp")
+		
+	if Input.is_action_just_pressed("shoot_left"):
+		player_shoot($ShootPositionLeft, "left")
+		player_position[2].get_node("AnimationPlayer").play("ShootLeft")
+		
+	if Input.is_action_just_pressed("shoot_down"):
+		player_shoot($ShootPositionDown, "down")
+		player_position[1].get_node("AnimationPlayer").play("ShootDown")
+	
 	
 		
 func put_players_into_squad():

@@ -19,11 +19,10 @@ func generate_level():
 	var map = walker.walk(200)
 	
 	var squad = Squad.instance()
-	for i in range(20):
+	for room in walker.rooms:
 		var monster = Monster.instance()
 		add_child(monster)
-		monster.position = walker.get_end_room().position * 32
-	
+		monster.position = room.position * 32
 		
 	
 	squad.add_child(remoteTransform)

@@ -88,7 +88,7 @@ func _on_Hurtbox_area_entered(area):
 	if(area.shoot_type):
 		match(area.shoot_type):
 			'soldier':
-				stats.health -= area.damage * 3
+				stats.health -= area.damage * 2
 			_:
 				stats.health -= area.damage
 	knockback = area.knockback_vector * 60
