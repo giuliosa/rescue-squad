@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+onready var hurtbox = $Hurtbox
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+
 const Shoot = preload("res://Scenes/Shoot.tscn")
 const Sword = preload("res://Scenes/Effects/Attacks/Sword.tscn")
 const Shuriken = preload("res://Scenes/Effects/Attacks/Shots/shuriken.tscn")
@@ -12,8 +15,11 @@ export(int) var max_health = 1
 export(int) var max_mana = 1
 export(int) var armor = 1
 var attack
+var player_role
+var dead
 
 func create_character(role):
+	player_role = role
 	character_name = role.class_type
 	role_name = role.class_type
 	max_health = role.health
@@ -68,26 +74,42 @@ func attack(direction):
 		
 	return shoot
 
-func special_attack(direction):
-	var special
+# func special_attack(direction):
+# 	var special
 	
-	match role_name:
-		CharacterClasses.Classes.SOLDIER:
-			pass
+# 	match role_name:
+# 		CharacterClasses.Classes.SOLDIER:
+# 			pass
 			
-		CharacterClasses.Classes.NANOTECH:
-			special = IceAttack.instance()
+# 		CharacterClasses.Classes.NANOTECH:
+# 			special = IceAttack.instance()
 			
-		CharacterClasses.Classes.COMBAT_MEDIC:
-			pass
+# 		CharacterClasses.Classes.COMBAT_MEDIC:
+# 			pass
 			
-		CharacterClasses.Classes.NINJA:
-			pass
+# 		CharacterClasses.Classes.NINJA:
+# 			pass
 
-		CharacterClasses.Classes.MONK:
-			pass
+# 		CharacterClasses.Classes.MONK:
+# 			pass
 
-		CharacterClasses.Classes.SAMURAI:
-			pass
+# 		CharacterClasses.Classes.SAMURAI:
+# 			pass
 	
-	return special
+# 	return special
+
+
+func _on_Hurtbox_area_entered(area):
+	var index = SquadPosition.position.find(player_role, 0)
+	SquadPosition.position[index].health -= area.damage
+	if SquadPosition.position[index].health <= 0:
+		dead = true
+	hurtbox.start_invicibility(0.6)
+	hurtbox.create_hit_effect()
+
+func _on_Hurtbox_invicibility_ended():
+	blinkAnimationPlayer.play("Stop")
+
+
+func _on_Hurtbox_invicibility_started():
+	blinkAnimationPlayer.play("Start")

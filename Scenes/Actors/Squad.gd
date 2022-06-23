@@ -127,17 +127,19 @@ func fix_look_direction():
 
 func player_shoot(shoot_position, direction):
 	var attack
-	if direction == "right":
+	if direction == "right" && !player_position[0].dead:
 		attack = player_position[0].attack("right")
 		
-	elif direction == "left":
+	elif direction == "left" && !player_position[2].dead:
 		attack = player_position[2].attack("left")
 		
-	elif direction == "up":
+	elif direction == "up" && !player_position[3].dead:
 		attack = player_position[3].attack("up")
 		
-	elif direction == "down":
+	elif direction == "down" && !player_position[1].dead:
 		attack = player_position[1].attack("down")
+		
+	# Fix position when the player is dead
 		
 	get_parent().add_child(attack)
 	attack.position = shoot_position.global_position

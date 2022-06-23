@@ -1,7 +1,7 @@
 extends Control
 
 
-func _ready():
+func _process(delta):
 	$Container/VBoxContainer/Top/FirstBox/Portrait.texture = SquadPosition.position[0].profile
 	$Container/VBoxContainer/Top/FirstBox/Info/Life/LifeValue.text = String(SquadPosition.position[0].health)
 	$Container/VBoxContainer/Top/FirstBox/Info/Mana/ManaValue.text = String(SquadPosition.position[0].mana)
