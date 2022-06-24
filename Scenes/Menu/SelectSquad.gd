@@ -12,6 +12,10 @@ var all_characters = []
 var button_control
 
 func _ready():
+	if SquadPosition.are_they_all_dead():
+		print("entrou")
+		SquadPosition.position	
+		enable_all_buttons()		
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/CombatMedic.grab_focus()
 	button_control = "CombatMedic"
 	get_viewport().connect("gui_focus_changed", self, "_on_focus_changed")
@@ -141,6 +145,14 @@ func disable_all_buttons():
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Samurai.disabled = true
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Samurai.texture_focused = null
 
+func enable_all_buttons():
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/CombatMedic.disabled = false
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Monk.disabled = false
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Ninja.disabled = false
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Soldier.disabled = false
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Nanothechinician.disabled = false
+	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectCharacter/Samurai.disabled = false
+	
 func add_character_to_selected_view():
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/First/Image.texture = SquadPosition.position[0].profile
 	$Sprite2/MarginContainer/ColorRect/MarginContainer/VBoxContainer/SelectedCharacters/First/Name.text = SquadPosition.position[0].character_name

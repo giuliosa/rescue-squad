@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 class_type = "samurai"
 character_name = "Antomba Fampler"
-health = 3
+health = 12
 damage = 4
 mana = 1
 armor = 3

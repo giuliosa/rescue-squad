@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 class_type = "monk"
 character_name = "Dhellon Maipham"
-health = 4
+health = 12
 damage = 3
 mana = 1
 armor = 2

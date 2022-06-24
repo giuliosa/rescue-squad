@@ -16,10 +16,16 @@ var velocity = Vector2.ZERO
 
 var player_position = []
 
+var all_dead
+
 func _ready():
 	put_players_into_squad()
 	fix_player_position()
 	fix_look_direction()
+	
+func _process(delta):
+	if SquadPosition.are_they_all_dead():
+		get_tree().change_scene("res://Scenes/Menu/gameover.tscn")
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -127,22 +133,26 @@ func fix_look_direction():
 
 func player_shoot(shoot_position, direction):
 	var attack
-	if direction == "right" && !player_position[0].dead:
-		attack = player_position[0].attack("right")
+	var is_dead
+	match direction:
+		"right":
+			is_dead = player_position[0].dead
+			attack = player_position[0].attack("right")
+		"left":
+			is_dead = player_position[2].dead
+			attack = player_position[2].attack("left")
+		"up":
+			is_dead = player_position[3].dead
+			attack = player_position[3].attack("up")
+		"down":
+			is_dead = player_position[1].dead
+			attack = player_position[1].attack("down")
+		_:
+			is_dead = false
 		
-	elif direction == "left" && !player_position[2].dead:
-		attack = player_position[2].attack("left")
-		
-	elif direction == "up" && !player_position[3].dead:
-		attack = player_position[3].attack("up")
-		
-	elif direction == "down" && !player_position[1].dead:
-		attack = player_position[1].attack("down")
-		
-	# Fix position when the player is dead
-		
-	get_parent().add_child(attack)
-	attack.position = shoot_position.global_position
+	if !is_dead:	
+		get_parent().add_child(attack)
+		attack.position = shoot_position.global_position
 
 func player_special_attack(shoot_position, direction):
 	var special_attack

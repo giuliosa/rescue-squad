@@ -19,9 +19,13 @@ func generate_level():
 	var map = walker.walk(200)
 	
 	var squad = Squad.instance()
+	print(walker.rooms)
+	var room_index = 0
 	for room in walker.rooms:
+		room_index += 1
 		var monster = Monster.instance()
-		add_child(monster)
+		if room_index > 5:
+			add_child(monster)
 		monster.position = room.position * 32
 		
 	

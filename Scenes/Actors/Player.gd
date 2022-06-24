@@ -18,6 +18,12 @@ var attack
 var player_role
 var dead
 
+func _physics_process(delta):
+	if dead:
+		$Body.visible = false
+		$Gun.visible = false
+		$Sprite.visible = false
+
 func create_character(role):
 	player_role = role
 	character_name = role.class_type
@@ -101,7 +107,8 @@ func attack(direction):
 
 func _on_Hurtbox_area_entered(area):
 	var index = SquadPosition.position.find(player_role, 0)
-	SquadPosition.position[index].health -= area.damage
+	if SquadPosition.position[index].health > 0:
+		SquadPosition.position[index].health -= area.damage
 	if SquadPosition.position[index].health <= 0:
 		dead = true
 	hurtbox.start_invicibility(0.6)

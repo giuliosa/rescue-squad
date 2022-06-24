@@ -1,4 +1,4 @@
-extends "res://Scenes/overlap/Hitbox.gd"
+extends Hitbox
 
 const SPEED = 200
 var velocity = Vector2()

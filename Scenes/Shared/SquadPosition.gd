@@ -9,3 +9,15 @@ func set_position(value):
 	
 func _ready():
 	pass
+
+func are_they_all_dead():
+	var quantity = 0
+	for i in position:
+		if i.health == 0:
+			quantity += 1
+	
+	if quantity == 4:
+		return true
+
+func revive_squad():
+	position.clear()

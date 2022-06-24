@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 class_type = "nanotech"
 character_name = "Aarnand Lirine"
-health = 3
+health = 7
 damage = 2
 mana = 4
 armor = 1

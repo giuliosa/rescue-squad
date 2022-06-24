@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 class_type = "combat_medic"
 character_name = "Amashma Dumbee"
-health = 2
+health = 8
 damage = 1
 mana = 3
 armor = 2
