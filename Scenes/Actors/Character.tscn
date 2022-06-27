@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Actor/Characters/Real-Soldier/Soldier.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Actor/Characters/Real-Soldier/gun.png" type="Texture" id=2]
@@ -29,12 +29,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 3.0
+height = 8.0
+
 [node name="Character" type="KinematicBody2D"]
-position = Vector2( 311, 184 )
+position = Vector2( 314, 187 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Shadow" type="Sprite" parent="."]
 position = Vector2( -1, 19 )
@@ -51,3 +52,8 @@ frame = 1
 [node name="Gun" type="Sprite" parent="Position2D"]
 texture = ExtResource( 2 )
 offset = Vector2( 5, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 22 )
+rotation = 1.5708
+shape = SubResource( 6 )
