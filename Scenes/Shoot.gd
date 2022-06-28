@@ -1,4 +1,4 @@
-extends Hitbox
+extends Hitboxa
 
 const SPEED = 200
 var velocity = Vector2()

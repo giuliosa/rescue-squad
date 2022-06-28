@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const ACCELERATION = 700
-const MAX_SPEED = 90
-const FRICTION = 400
+const ACCELERATION = 1000
+const MAX_SPEED = 150
+const FRICTION = 500 
 
 enum {
 	MOVE,
@@ -12,6 +12,11 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
+var fire_rate = 0.2
+var can_fire = true
+
+var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
+
 
 func _process(delta):
 	$Position2D/Gun.look_at(get_global_mouse_position())
@@ -21,6 +26,9 @@ func _process(delta):
 	else:
 		$Position2D/Body.flip_h = false
 		$Position2D/Gun.flip_v = false
+		
+	if Input.is_action_pressed("mouse_shoot") and can_fire:
+		fire()
 		
 
 func _physics_process(delta):
@@ -43,3 +51,23 @@ func move_state(delta):
 
 func move():
 	velocity = move_and_slide(velocity)
+
+
+func fire():
+	$Position2D/Gun/Position/GunShoot.play()
+	var bullet = bullet_scene.instance()
+	get_parent().add_child(bullet)
+	bullet.global_position = $Position2D/Gun/Position.get_global_position()
+	var target = get_global_mouse_position()
+	var direction_to_mouse = bullet.global_position.direction_to(target).normalized()
+	bullet.direction = direction_to_mouse
+	bullet.rotation_degrees = $Position2D/Gun.rotation_degrees
+	can_fire = false
+	yield(get_tree().create_timer(fire_rate), "timeout")
+	can_fire = true
+	
+
+
+func _on_GunShoot_animation_finished():
+	$Position2D/Gun/Position/GunShoot.stop()
+	pass # Replace with function body.
