@@ -1,6 +1,6 @@
 extends Node2D
 
-const Squad = preload("res://Scenes/Actors/Squad.tscn")
+const Character = preload("res://Scenes/Actors/Character.tscn")
 const ExitDoor = preload("res://Scenes/ExitDoor.tscn")
 const Monster = preload("res://Scenes/Actors/Enemies/Minions/Ciclope.tscn")
 
@@ -18,7 +18,7 @@ func generate_level():
 	# Increase the number passed in the walk function to get bigger rooms
 	var map = walker.walk(200)
 	
-	var squad = Squad.instance()
+	var squad = Character.instance()
 	print(walker.rooms)
 	var room_index = 0
 	for room in walker.rooms:

@@ -3,6 +3,7 @@ extends Area2D
 
 const SPEED = 1000
 var direction = Vector2()
+var damage = 4
 
 func _process(delta):
 	translate(direction.normalized() * SPEED * delta)

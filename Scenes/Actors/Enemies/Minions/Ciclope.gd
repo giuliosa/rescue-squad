@@ -85,13 +85,8 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 
 func _on_Hurtbox_area_entered(area):
-	if(area.shoot_type):
-		match(area.shoot_type):
-			'soldier':
-				stats.health -= area.damage * 2
-			_:
-				stats.health -= area.damage
-	knockback = area.knockback_vector * 60
+	stats.health -= area.damage
+	#knockback = area.knockback_vector * 60
 	hurtbox.create_hit_effect()
 	hurtbox.start_invicibility(0.4)	
 
