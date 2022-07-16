@@ -13,6 +13,10 @@ func _ready():
 	randomize()
 	generate_level()
 	
+func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+	
 func generate_level():
 	var walker = Walker.new(Vector2(17, 10), borders)
 	# Increase the number passed in the walk function to get bigger rooms
