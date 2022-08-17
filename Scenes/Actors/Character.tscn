@@ -67,12 +67,9 @@ radius = 3.0
 height = 8.0
 
 [node name="Character" type="KinematicBody2D"]
-position = Vector2( 0, -16 )
+position = Vector2( 1, -18 )
 collision_layer = 2
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Shadow" type="Sprite" parent="."]
 position = Vector2( -1, 19 )

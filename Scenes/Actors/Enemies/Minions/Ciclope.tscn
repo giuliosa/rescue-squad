@@ -110,10 +110,10 @@ script = ExtResource( 8 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = SubResource( 15 )
 frames = SubResource( 5 )
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 6 )
 rotation = 1.5708
 shape = SubResource( 6 )
@@ -135,7 +135,6 @@ collision_mask = 2
 shape = SubResource( 8 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 4 )]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -144,7 +143,6 @@ position = Vector2( 0, 1 )
 shape = SubResource( 9 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 5 )]
-visible = false
 collision_layer = 32
 collision_mask = 32
 

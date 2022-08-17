@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Actors/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Actors/Enemies/Minions/Ciclope.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Actors/Partner.tscn" type="PackedScene" id=3]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Ciclope" parent="." instance=ExtResource( 2 )]
+position = Vector2( 51, 33 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 109, 76 )
+
+[node name="Partner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 247, 49 )

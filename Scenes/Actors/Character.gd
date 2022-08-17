@@ -38,8 +38,8 @@ func _physics_process(delta):
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("shoot_right") - Input.get_action_strength("shoot_left")
-	input_vector.y = Input.get_action_strength("shoot_down") - Input.get_action_strength("shoot_up")
+	input_vector.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
+	input_vector.y = Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
