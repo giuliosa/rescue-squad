@@ -63,28 +63,27 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 3.0
+radius = 3.99998
 height = 8.0
 
 [node name="Character" type="KinematicBody2D"]
-position = Vector2( 1, -18 )
 collision_layer = 2
 script = ExtResource( 4 )
 
 [node name="Shadow" type="Sprite" parent="."]
-position = Vector2( -1, 19 )
+position = Vector2( 0, 1 )
 texture = ExtResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 0, 16 )
+position = Vector2( 0, 1 )
 
 [node name="Body" type="AnimatedSprite" parent="Position2D"]
-position = Vector2( 0, -7 )
+position = Vector2( 1, -9 )
 frames = SubResource( 5 )
 frame = 1
 
 [node name="Gun" type="Sprite" parent="Position2D"]
-position = Vector2( 1, 0 )
+position = Vector2( 2, -2 )
 texture = ExtResource( 2 )
 offset = Vector2( 5, 1 )
 __meta__ = {
@@ -104,11 +103,12 @@ frames = SubResource( 13 )
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 22 )
+position = Vector2( 0, 4 )
 rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -14 )
 current = true
 zoom = Vector2( 0.4, 0.4 )
 
