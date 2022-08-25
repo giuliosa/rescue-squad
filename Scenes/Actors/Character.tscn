@@ -69,6 +69,9 @@ height = 8.0
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_vertical_guides_": [ 642.0 ]
+}
 
 [node name="Shadow" type="Sprite" parent="."]
 position = Vector2( 0, 1 )
@@ -110,6 +113,5 @@ shape = SubResource( 6 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -14 )
 current = true
-zoom = Vector2( 0.4, 0.4 )
 
 [connection signal="animation_finished" from="Position2D/Gun/Position/GunShoot" to="." method="_on_GunShoot_animation_finished"]

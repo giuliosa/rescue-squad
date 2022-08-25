@@ -1,25 +1,280 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Actors/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Ciclope.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Actors/Partner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/teleporter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Tileset/RandomLevelGenTileset.png" type="Texture" id=5]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "RandomLevelGenTileset.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 96, 96, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
 
 [node name="TestScene" type="Node2D"]
+
+[node name="Path" type="Navigation2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Path"]
+margin_left = -1814.0
+margin_top = -2268.0
+margin_right = 2739.0
+margin_bottom = 2775.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1638424, 0, 0, -1638423, 0, 0, -1638422, 0, 0, -1638421, 0, 0, -1638420, 0, 0, -1638419, 0, 0, -1638418, 0, 0, -1638417, 0, 0, -1638416, 0, 0, -1638415, 0, 0, -1638414, 0, 0, -1638413, 0, 0, -1638412, 0, 0, -1638411, 0, 0, -1638410, 0, 0, -1638409, 0, 0, -1638408, 0, 0, -1638407, 0, 0, -1638406, 0, 0, -1638405, 0, 0, -1638404, 0, 0, -1638403, 0, 0, -1638402, 0, 0, -1638401, 0, 0, -1703936, 0, 0, -1703935, 0, 0, -1703934, 0, 0, -1703933, 0, 0, -1703932, 0, 0, -1703931, 0, 0, -1703930, 0, 0, -1703929, 0, 0, -1703928, 0, 0, -1703927, 0, 0, -1703926, 0, 0, -1703925, 0, 0, -1703924, 0, 0, -1703923, 0, 0, -1703922, 0, 0, -1703921, 0, 0, -1703920, 0, 0, -1703919, 0, 0, -1703918, 0, 0, -1703917, 0, 0, -1703916, 0, 0, -1572888, 0, 0, -1638380, 0, 0, -1507352, 0, 0, -1572844, 0, 0, -1441816, 0, 0, -1507308, 0, 0, -1376303, 0, 0, -1376302, 0, 0, -1376301, 0, 0, -1376300, 0, 0, -1376299, 0, 0, -1376298, 0, 0, -1376297, 0, 0, -1376280, 0, 0, -1441772, 0, 0, -1310767, 0, 0, -1310761, 0, 0, -1310744, 0, 0, -1376236, 0, 0, -1245231, 0, 0, -1245225, 0, 0, -1245208, 0, 0, -1310700, 0, 0, -1179695, 0, 0, -1179689, 0, 0, -1179672, 0, 0, -1245164, 0, 0, -1114159, 0, 0, -1114153, 0, 0, -1114136, 0, 0, -1179628, 0, 0, -1048623, 0, 0, -1048617, 0, 0, -1048616, 0, 0, -1048615, 0, 0, -1048614, 0, 0, -1048613, 0, 0, -1048612, 0, 0, -1048611, 0, 0, -1048610, 0, 0, -1048609, 0, 0, -1048608, 0, 0, -1048607, 0, 0, -1048606, 0, 0, -1048605, 0, 0, -1048604, 0, 0, -1048603, 0, 0, -1048602, 0, 0, -1048601, 0, 0, -1114092, 0, 0, -983087, 0, 0, -1048556, 0, 0, -917551, 0, 0, -983020, 0, 0, -852015, 0, 0, -917484, 0, 0, -786479, 0, 0, -851948, 0, 0, -720943, 0, 0, -786412, 0, 0, -655407, 0, 0, -655401, 0, 0, -655400, 0, 0, -655399, 0, 0, -655398, 0, 0, -655397, 0, 0, -655396, 0, 0, -655395, 0, 0, -655394, 0, 0, -655393, 0, 0, -655392, 0, 0, -655391, 0, 0, -655390, 0, 0, -655389, 0, 0, -655388, 0, 0, -655387, 0, 0, -655386, 0, 0, -655385, 0, 0, -655384, 0, 0, -720876, 0, 0, -589871, 0, 0, -589865, 0, 0, -589848, 0, 0, -655340, 0, 0, -524335, 0, 0, -524329, 0, 0, -524312, 0, 0, -589804, 0, 0, -458799, 0, 0, -458793, 0, 0, -458776, 0, 0, -524268, 0, 0, -393263, 0, 0, -393257, 0, 0, -393240, 0, 0, -458732, 0, 0, -327727, 0, 0, -327721, 0, 0, -327704, 0, 0, -393196, 0, 0, -262191, 0, 0, -262185, 0, 0, -262168, 0, 0, -327660, 0, 0, -196655, 0, 0, -196654, 0, 0, -196653, 0, 0, -196652, 0, 0, -196651, 0, 0, -196650, 0, 0, -196649, 0, 0, -196632, 0, 0, -196631, 0, 0, -196630, 0, 0, -196629, 0, 0, -196628, 0, 0, -196627, 0, 0, -196626, 0, 0, -196625, 0, 0, -196624, 0, 0, -196623, 0, 0, -196622, 0, 0, -196621, 0, 0, -196620, 0, 0, -196619, 0, 0, -196618, 0, 0, -196617, 0, 0, -196616, 0, 0, -196615, 0, 0, -196614, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262132, 0, 0, -262131, 0, 0, -262130, 0, 0, -262129, 0, 0, -262128, 0, 0, -262127, 0, 0, -262126, 0, 0, -262125, 0, 0, -262124, 0, 0, -196601, 0, 0, -196596, 0, 0, -131065, 0, 0, -131060, 0, 0, -65529, 0, 0, -65524, 0, 0, 65512, 0, 0, 65513, 0, 0, 65514, 0, 0, 65515, 0, 0, 65516, 0, 0, 65517, 0, 0, 65518, 0, 0, 65519, 0, 0, 65520, 0, 0, 65521, 0, 0, 65522, 0, 0, 65523, 0, 0, 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 131048, 0, 0, 131068, 0, 0, 65536, 0, 0, 65555, 0, 0, 196584, 0, 0, 196604, 0, 0, 131072, 0, 0, 131091, 0, 0, 262120, 0, 0, 262140, 0, 0, 196608, 0, 0, 196627, 0, 0, 327656, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262163, 0, 0, 393192, 0, 0, 327699, 0, 0, 458728, 0, 0, 393235, 0, 0, 524264, 0, 0, 458771, 0, 0, 589800, 0, 0, 589821, 0, 0, 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524307, 0, 0, 655336, 0, 0, 655357, 0, 0, 589824, 0, 0, 589843, 0, 0, 720872, 0, 0, 720893, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 786408, 0, 0, 786429, 0, 0, 851944, 0, 0, 851965, 0, 0, 917480, 0, 0, 917501, 0, 0, 983016, 0, 0, 983037, 0, 0, 1048552, 0, 0, 1048573, 0, 0, 1114088, 0, 0, 1114109, 0, 0, 1179624, 0, 0, 1179625, 0, 0, 1179645, 0, 0, 1245160, 0, 0, 1245181, 0, 0, 1310696, 0, 0, 1310697, 0, 0, 1310698, 0, 0, 1310699, 0, 0, 1310700, 0, 0, 1310701, 0, 0, 1310702, 0, 0, 1310703, 0, 0, 1310704, 0, 0, 1310705, 0, 0, 1310706, 0, 0, 1310707, 0, 0, 1310708, 0, 0, 1310709, 0, 0, 1310710, 0, 0, 1310711, 0, 0, 1310712, 0, 0, 1310713, 0, 0, 1310714, 0, 0, 1310715, 0, 0, 1310716, 0, 0, 1310717, 0, 0 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Ciclope" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 51, 33 )
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope13" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope14" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope15" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope16" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope17" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope18" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope19" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope20" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
+
+[node name="Ciclope21" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 94, 82 )
 
 [node name="Character" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 234, 233 )
+position = Vector2( 314, 195 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Partner" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 412, 307 )
+position = Vector2( 525, 297 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="StaticBody2D" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 145, -71 )
+visible = false
+position = Vector2( 644, 103 )
+
+[node name="Ciclope2" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 556, 57 )
+
+[node name="Ciclope3" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 522, -703 )
+
+[node name="Ciclope4" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -427, -605 )
+
+[node name="Ciclope5" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -111, -507 )
+
+[node name="Ciclope6" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -474, -268 )
+
+[node name="Ciclope7" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 333, -305 )
+
+[node name="Ciclope22" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 333, -305 )
+
+[node name="Ciclope8" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope23" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope24" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope25" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope26" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope27" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope28" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope29" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope30" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope31" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope32" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope33" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -898, -416 )
+
+[node name="Ciclope9" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1076, -443 )
+
+[node name="Ciclope10" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope44" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope45" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope46" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope47" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope48" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope49" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope50" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope51" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope52" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope53" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -1402, -174 )
+
+[node name="Ciclope11" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -208, 139 )
+
+[node name="Ciclope12" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope34" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope35" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope36" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope37" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope38" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope39" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope40" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope41" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope42" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )
+
+[node name="Ciclope43" parent="YSort" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( -608, 512 )

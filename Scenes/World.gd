@@ -39,6 +39,7 @@ func generate_level():
 	add_child(squad)
 	add_child(partner)
 	squad.position = map.front() * 32
+	partner.position = map.front() * 32
 	
 	var exitDoor = ExitDoor.instance()
 	add_child(exitDoor)
