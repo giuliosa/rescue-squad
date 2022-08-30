@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Monster
+
 const EnemyDeathEffect = preload("res://Scenes/Effects/EnemyDeathEffect.tscn")
 
 export var ACCELERATION = 300
@@ -56,9 +58,16 @@ func _physics_process(delta):
 				update_state()
 				
 		CHASE:
+			var look = self.get_node("RayCast2D")
+			
 			var player = playerDetectionZone.player
 			if player != null:
-				accelerate_towards_point(player.global_position, delta) 
+				look.cast_to = player.position - self.position
+				look.force_raycast_update()
+				
+				if !look.is_colliding():
+					pass
+				
 			else: 
 				state = IDLE
 			sprite.flip_h = velocity.x < 0
@@ -84,8 +93,9 @@ func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
 
+
+
 func _on_Hurtbox_area_entered(area):
-	print(area.name)
 	if (area.name == "Bullet"):
 		stats.health -= area.damage
 		#knockback = area.knockback_vector * 60

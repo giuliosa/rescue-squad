@@ -62,7 +62,7 @@ height = 12.0
 extents = Vector2( 9, 8.5 )
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 486.05
+radius = 239.416
 
 [sub_resource type="CircleShape2D" id=9]
 radius = 7.0
@@ -105,12 +105,14 @@ tracks/0/keys = {
 polygon = PoolVector2Array( 7, 7, 7, 2, 6, 1, 6, -2, 4, -4, -3, -4, -5, -2, -6, -1, -6, 3, -6, 7 )
 
 [node name="Ciclope" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource( 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = SubResource( 15 )
 frames = SubResource( 5 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -177,6 +179,9 @@ energy = 0.3
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 visible = false
 occluder = SubResource( 16 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 2
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invicibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invicibility_ended"]

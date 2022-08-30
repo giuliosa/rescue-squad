@@ -15,8 +15,11 @@ var velocity = Vector2.ZERO
 var fire_rate = 0.2
 var can_fire = true
 
+
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
+func _ready():
+	$ScentTimer.connect("timeout", self, "add_scent")
 
 func _process(delta):
 	$Position2D/Gun.look_at(get_global_mouse_position())

@@ -7,14 +7,14 @@ const Monster = preload("res://Scenes/Actors/Enemies/Minions/Ciclope.tscn")
 
 var borders = Rect2(1, 1, 97, 46)
 
-onready var tileMap = $TileMap
+onready var tileMap = $NavigationObstacle2D/TileMap
 onready var remoteTransform = $RemoteTransform2D
 
 func _ready():
 	randomize()
 	generate_level()
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 	
@@ -25,7 +25,6 @@ func generate_level():
 	
 	var squad = Character.instance()
 	var partner = Partner.instance()
-	print(walker.rooms)
 	var room_index = 0
 	for room in walker.rooms:
 		room_index += 1
