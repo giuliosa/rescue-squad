@@ -51,8 +51,8 @@ func _physics_process(delta: float) -> void:
 	agent.set_velocity(velocity)
 
 func move(velocity: Vector2):
+	sprite.flip_h = velocity.x < 0
 	move_and_slide(velocity)
-	#sprite.rotation = lerp_angle(sprite.rotation, velocity.angle(), 10.0 * get_physics_process_delta_time())
 		
 		
 func attack_state(_delta):	
@@ -75,16 +75,4 @@ func idle_state(_delta):
 func _update_pathfinding() -> void:
 	agent.set_target_location(player.global_position)
 
-	
-func _on_DetectPartner_body_entered(body):
-	if(body.name == "Character"):
-		#state = IDLE
-		pass
-
-
-func _on_DetectPartner_body_exited(body):
-	if(body.name == "Character"):
-		pass
-		#state = ALIGN
-		
 	

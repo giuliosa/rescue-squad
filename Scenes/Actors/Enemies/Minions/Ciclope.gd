@@ -58,16 +58,9 @@ func _physics_process(delta):
 				update_state()
 				
 		CHASE:
-			var look = self.get_node("RayCast2D")
-			
 			var player = playerDetectionZone.player
 			if player != null:
-				look.cast_to = player.position - self.position
-				look.force_raycast_update()
-				
-				if !look.is_colliding():
-					pass
-				
+				accelerate_towards_point(player.global_position, delta) 
 			else: 
 				state = IDLE
 			sprite.flip_h = velocity.x < 0
@@ -76,6 +69,8 @@ func _physics_process(delta):
 		velocity += softCollision.get_push_vector() * delta * 400
 	
 	velocity = move_and_slide(velocity)
+	
+	
 func accelerate_towards_point(position, delta):
 	var direction = global_position.direction_to(position) 
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
@@ -94,17 +89,14 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 
 
-
 func _on_Hurtbox_area_entered(area):
 	if (area.name == "Bullet"):
 		stats.health -= area.damage
 		#knockback = area.knockback_vector * 60
 		hurtbox.create_hit_effect()
-		hurtbox.start_invicibility(0.4)	
+		hurtbox.start_invicibility(0.4)
 		
 	
-
-
 func _on_Stats_no_health():
 	queue_free()
 	var enemyDeathEffect = EnemyDeathEffect.instance()
