@@ -8,7 +8,6 @@ export var path_to_player := NodePath()
 enum {
 	IDLE,
 	ALIGN,
-	CHASE,
 	ATTACK
 }
 
@@ -17,12 +16,13 @@ var state := ALIGN
 
 var target = null
 
-var fire_rate = 0.1
+var fire_rate = 9
 var can_fire = true
 
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
 onready var raycast = $RayCast2D
+onready var shoot_position := $Sprite/Position2D
 
 onready var timer := $Timer
 onready var sprite := $Sprite
@@ -37,11 +37,24 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished():
+		print("terminou")
 		return
 		
+		
+	match state:
+		IDLE:
+			pass
+		ATTACK:
+			attack_state(delta)
+		ALIGN:
+			pass
+			
 	raycast.look_at(get_global_mouse_position())
 	if raycast.is_colliding():
 		target = raycast.get_collider()
+		state = ATTACK
+	else: 
+		state = ALIGN
 		
 	var target_global_position := agent.get_next_location()
 	var direction := global_position.direction_to(target_global_position)
@@ -59,7 +72,7 @@ func attack_state(_delta):
 	if is_instance_valid(target): 
 		var bullet = bullet_scene.instance()
 		get_parent().add_child(bullet)
-		bullet.global_position = $Position2D.get_global_position()
+		bullet.global_position = shoot_position.get_global_position()
 		var shoot_target = target.global_position
 		var direction_to_mouse = bullet.global_position.direction_to(shoot_target).normalized()
 		bullet.direction = direction_to_mouse

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Actors/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Ciclope.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/teleporter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Tileset/TilesetInterior.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Tileset/TilesetInteriorFloor.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Actors/Enemies/Minions/Brute.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Actors/Enemies/Minions/Mini.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -90,30 +92,9 @@ navpoly = SubResource( 4 )
 
 [node name="YSort" type="YSort" parent="TileMap/Navigation2D"]
 
-[node name="Ciclope" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 114, 68 )
-
-[node name="Ciclope14" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 49, 100 )
-
-[node name="Ciclope15" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 82, 50 )
-
 [node name="Partner" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 3 )]
-position = Vector2( 698, -239 )
+position = Vector2( 621, -218 )
 path_to_player = NodePath("../Character")
-
-[node name="Ciclope20" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 151, 34 )
-
-[node name="Ciclope21" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 104, 302 )
-MAX_SPEED = 70
 
 [node name="Character" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 1 )]
 position = Vector2( 616, -250 )
@@ -125,6 +106,81 @@ __meta__ = {
 visible = false
 position = Vector2( 644, 103 )
 
-[node name="Ciclope2" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
-unique_name_in_owner = true
-position = Vector2( 550, 52 )
+[node name="Brute" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 7 )]
+position = Vector2( 151, 365 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 200
+MAX_SPEED = 20
+
+[node name="Brute2" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 7 )]
+position = Vector2( 69, 307 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 200
+MAX_SPEED = 20
+
+[node name="Brute3" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 7 )]
+position = Vector2( 113, 307 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 200
+MAX_SPEED = 20
+
+[node name="Brute4" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 7 )]
+position = Vector2( 69, 358 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 200
+MAX_SPEED = 20
+
+[node name="Brute5" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 7 )]
+position = Vector2( 437, -172 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 200
+MAX_SPEED = 20
+
+[node name="Ciclope" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 464, 185 )
+
+[node name="Mini" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 549, -7 )
+MAX_SPEED = 300
+
+[node name="Mini5" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 549, -7 )
+MAX_SPEED = 300
+
+[node name="Mini2" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 549, -7 )
+MAX_SPEED = 300
+
+[node name="Mini3" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 814, -166 )
+MAX_SPEED = 300
+
+[node name="Mini6" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 826, -284 )
+MAX_SPEED = 300
+
+[node name="Mini7" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 807, -243 )
+MAX_SPEED = 300
+
+[node name="Mini8" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 957, -296 )
+MAX_SPEED = 300
+
+[node name="Mini9" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 978, -601 )
+MAX_SPEED = 300
+
+[node name="Mini4" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 8 )]
+position = Vector2( 442, -310 )
+MAX_SPEED = 300

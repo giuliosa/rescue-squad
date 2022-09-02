@@ -30,13 +30,13 @@ hframes = 8
 vframes = 13
 frame = 56
 
+[node name="Position2D" type="Position2D" parent="Sprite"]
+position = Vector2( 33, 14 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 8 )
 rotation = 1.5708
 shape = SubResource( 1 )
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 33, -2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
