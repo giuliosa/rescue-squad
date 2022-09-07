@@ -12,7 +12,7 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
-var fire_rate = 0.9
+var fire_rate = 0.4
 var can_fire = true
 
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
