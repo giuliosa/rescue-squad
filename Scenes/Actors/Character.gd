@@ -18,6 +18,11 @@ var can_fire = true
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
 func _process(delta):
+	
+	#TODO: Remove this, and put in the real world scene
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+	
 	$Position2D/Gun.look_at(get_global_mouse_position())
 	if (get_global_mouse_position().x < $Position2D.global_position.x):
 		$Position2D/Body.flip_h = true
@@ -36,6 +41,7 @@ func _physics_process(delta):
 			move_state(delta)
 
 func move_state(delta):
+	$AnimationPlayer.play("Run")
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
 	input_vector.y = Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
@@ -53,7 +59,8 @@ func move():
 
 
 func fire():
-	$Position2D/Gun/Position/GunShoot.play()
+	$AnimationPlayer.play("Shoot")
+	#$Position2D/Gun/Position/GunShoot.play()
 	var bullet = bullet_scene.instance()
 	get_parent().add_child(bullet)
 	bullet.global_position = $Position2D/Gun/Position.get_global_position()

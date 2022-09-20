@@ -51,11 +51,12 @@ CharacterClasses="*res://Scenes/Shared/CharacterClasses.gd"
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=720
+window/size/height=340
 window/size/resizable=false
+window/size/fullscreen=true
 window/size/test_width=1280
-window/size/test_height=720
+window/size/test_height=680
 mouse_cursor/custom_image="res://Assets/Hud/aim2.png"
 mouse_cursor/custom_image_hotspot=Vector2( 16, 16 )
 window/stretch/mode="2d"

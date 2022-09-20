@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TilesetInteriorFloor.png-7a2c21ec75cca9a8126dd013e59ccb16.stex"
+path="res://.import/soldier-v1.2.png-6c32651804efef82b7d9bcc3bc987022.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tileset/TilesetInteriorFloor.png"
-dest_files=[ "res://.import/TilesetInteriorFloor.png-7a2c21ec75cca9a8126dd013e59ccb16.stex" ]
+source_file="res://Assets/Actor/Characters/Real-Soldier/soldier-v1.2.png"
+dest_files=[ "res://.import/soldier-v1.2.png-6c32651804efef82b7d9bcc3bc987022.stex" ]
 
 [params]
 
