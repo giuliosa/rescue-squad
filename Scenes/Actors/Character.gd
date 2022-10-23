@@ -12,12 +12,22 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
-var fire_rate = 0.9
+var fire_rate = 0.4
 var can_fire = true
 
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
+onready var hurtbox = $Hurtbox
+
+func _ready():
+	PlayerStats.connect("no_health_player", self, "game_over")
+
 func _process(delta):
+	
+	#TODO: Remove this, and put in the real world scene
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+	
 	$Position2D/Gun.look_at(get_global_mouse_position())
 	if (get_global_mouse_position().x < $Position2D.global_position.x):
 		$Position2D/Body.flip_h = true
@@ -36,6 +46,7 @@ func _physics_process(delta):
 			move_state(delta)
 
 func move_state(delta):
+	#$AnimationPlayer.play("Run")
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
 	input_vector.y = Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
@@ -53,7 +64,7 @@ func move():
 
 
 func fire():
-	$Position2D/Gun/Position/GunShoot.play()
+	#$AnimationPlayer.play("Shoot")
 	var bullet = bullet_scene.instance()
 	get_parent().add_child(bullet)
 	bullet.global_position = $Position2D/Gun/Position.get_global_position()
@@ -65,8 +76,14 @@ func fire():
 	yield(get_tree().create_timer(fire_rate), "timeout")
 	can_fire = true
 	
-
+func game_over():
+	get_tree().change_scene("res://Scenes/Menu/gameover.tscn")
 
 func _on_GunShoot_animation_finished():
 	$Position2D/Gun/Position/GunShoot.stop()
-	pass # Replace with function body.
+
+
+func _on_Hurtbox_area_entered(area):
+	PlayerStats.health_player -= area.damage
+	hurtbox.start_invicibility(0.6)
+	hurtbox.create_hit_effect()
