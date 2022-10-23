@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Actors/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tileset/tileset-1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Ciclope.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Mini.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Brute.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Menu/LifeHUD.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -449,15 +450,20 @@ position = Vector2( 906, -435 )
 
 [node name="Mini" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 6 )]
 position = Vector2( 340, -148 )
+ACCELERATION = 600
+MAX_SPEED = 90
 
 [node name="Mini2" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 6 )]
 position = Vector2( 557, -432 )
+ACCELERATION = 600
 
 [node name="Mini3" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 6 )]
 position = Vector2( 684, -433 )
+ACCELERATION = 600
 
 [node name="Ciclope" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 5 )]
 position = Vector2( 397, -371 )
+ACCELERATION = 200
 
 [node name="Ciclope2" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 5 )]
 position = Vector2( 846, -372 )
@@ -478,3 +484,5 @@ __meta__ = {
 [node name="StaticBody2D" parent="TileMap/Navigation2D/YSort" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 644, 103 )
+
+[node name="LifeHUD" parent="." instance=ExtResource( 8 )]
