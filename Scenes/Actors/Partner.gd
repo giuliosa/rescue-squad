@@ -29,6 +29,7 @@ onready var sprite := $Sprite
 onready var gun := $Sprite/Gun
 onready var agent: NavigationAgent2D = $NavigationAgent2D
 onready var player := get_node(path_to_player)
+onready var hurtbox := $Hurtbox
 
 func _ready():
 	yield(get_tree(), "idle_frame")
@@ -91,3 +92,9 @@ func _update_pathfinding() -> void:
 	agent.set_target_location(player.global_position)
 
 	
+
+
+func _on_Hurtbox_area_entered(area):
+	PartnerStats.health_partner -= area.damage
+	hurtbox.start_invicibility(0.6)
+	hurtbox.create_hit_effect()

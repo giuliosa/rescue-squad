@@ -4,7 +4,7 @@ extends Node2D
 func _ready():
 	$Sprite/MarginContainer/VBoxContainer/VBoxContainer/StartButton.grab_focus()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 
 func _on_StartButton_pressed():
