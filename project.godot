@@ -46,9 +46,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SquadPosition="*res://Scenes/Shared/SquadPosition.gd"
-CharacterClasses="*res://Scenes/Shared/CharacterClasses.gd"
 PlayerStats="*res://Scenes/Actors/PlayerStats.tscn"
+PartnerStats="*res://Scenes/Actors/PartnerStats.tscn"
 
 [display]
 
@@ -212,6 +211,7 @@ shoot_down={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="partner"
 2d_physics/layer_5="player_hurtbox"
+2d_physics/layer_6="partner_hurtbox"
 
 [physics]
 

@@ -31,6 +31,21 @@ texture = ExtResource( 3 )
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, 1 )
 
+[node name="Position" type="Position2D" parent="Position2D"]
+position = Vector2( 4, -7 )
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 8.3
+}
+
+[node name="GunShoot" type="Sprite" parent="Position2D/Position"]
+visible = false
+position = Vector2( -4.5, -0.5 )
+texture = ExtResource( 5 )
+offset = Vector2( 22.5, 0.698 )
+hframes = 6
+
 [node name="Body" type="Sprite" parent="Position2D"]
 position = Vector2( 1, -9 )
 texture = ExtResource( 1 )
@@ -40,20 +55,6 @@ position = Vector2( 1, -3 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 offset = Vector2( 10, 1 )
-
-[node name="Position" type="Position2D" parent="Position2D/Gun"]
-position = Vector2( 32.5, -2.5 )
-__meta__ = {
-"_edit_group_": true,
-"_gizmo_extents_": 8.3
-}
-
-[node name="GunShoot" type="Sprite" parent="Position2D/Gun/Position"]
-visible = false
-position = Vector2( -4.5, -0.5 )
-texture = ExtResource( 5 )
-offset = Vector2( 22.5, 0.698 )
-hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 3 )
@@ -72,6 +73,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
 position = Vector2( 4, -6 )
 shape = SubResource( 7 )
 
