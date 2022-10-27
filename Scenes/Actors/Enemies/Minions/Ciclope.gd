@@ -90,7 +90,8 @@ func pick_random_state(state_list):
 
 
 func _on_Hurtbox_area_entered(area):
-	if (area.name == "Bullet"):
+	print(area.name)
+	if (area.name == "Bullet" or area.name == "Hitbox"):
 		stats.health -= area.damage
 		#knockback = area.knockback_vector * 60
 		hurtbox.create_hit_effect()

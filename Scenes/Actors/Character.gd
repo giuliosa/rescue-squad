@@ -29,16 +29,21 @@ func _process(delta):
 		get_tree().quit()
 	
 	$Position2D/Gun.look_at(get_global_mouse_position())
+	$Knife.look_at(get_global_mouse_position())
 	if (get_global_mouse_position().x < $Position2D.global_position.x):
 		$Position2D/Body.flip_h = true
+		$Shadow.flip_h = true
 		$Position2D/Gun.flip_v = true
 	else:
 		$Position2D/Body.flip_h = false
 		$Position2D/Gun.flip_v = false
+		$Shadow.flip_h = false
 		
 	if Input.is_action_pressed("mouse_shoot") and can_fire:
 		fire()
-		
+	
+	if Input.is_action_just_pressed("mouse_secondary"):
+		$AnimationPlayer.play("Knife_Attack")
 
 func _physics_process(delta):
 	match state:
