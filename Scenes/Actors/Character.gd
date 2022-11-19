@@ -2,22 +2,26 @@ extends KinematicBody2D
 
 const ACCELERATION = 1000
 const MAX_SPEED = 150
+const ROLL_SPEED = MAX_SPEED * 3
 const FRICTION = 500 
 
 enum {
 	MOVE,
-	ROLL,
+	DASH,
 	ATTACK
 }
 
 var state = MOVE
 var velocity = Vector2.ZERO
+var roll_vector = Vector2.RIGHT
 var fire_rate = 0.4
 var can_fire = true
+
 
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
 onready var hurtbox := $Hurtbox
+onready var knifeHitbox:= $Knife/Hitbox
 
 func _ready():
 	PlayerStats.connect("no_health_player", self, "game_over")
@@ -44,11 +48,19 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("mouse_secondary"):
 		$AnimationPlayer.play("Knife_Attack")
+		
+	if Input.is_action_just_pressed("special_move"):
+		dash_state(delta)
 
-func _physics_process(delta):
+func _physics_process(delta):	
+	roll_vector = get_local_mouse_position().normalized()
+	knifeHitbox.knockback_vector = roll_vector
+	
 	match state:
 		MOVE:
 			move_state(delta)
+		DASH: 
+			dash_state(delta)
 
 func move_state(delta):
 	#$AnimationPlayer.play("Run")
@@ -58,10 +70,15 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
+		
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
+	move()
+	
+func dash_state(delta):
+	velocity = roll_vector * ROLL_SPEED
 	move()
 
 func move():

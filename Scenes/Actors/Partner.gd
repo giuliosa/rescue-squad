@@ -39,7 +39,6 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished():
-		#print("terminou")
 		return
 		
 		
@@ -67,7 +66,7 @@ func _physics_process(delta: float) -> void:
 
 func move(velocity: Vector2):
 	sprite.flip_h = velocity.x < 0
-	gun.flip_h = velocity.x < 0
+	#gun.flip_h = velocity.x < 0
 	move_and_slide(velocity)
 		
 		
