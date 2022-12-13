@@ -24,7 +24,8 @@ texture = ExtResource( 2 )
 target_desired_distance = 100.0
 path_max_distance = 30.0
 avoidance_enabled = true
-radius = 40.43
+radius = 60.0
+max_speed = 150.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -1, -10 )

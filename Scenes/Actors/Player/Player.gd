@@ -14,11 +14,6 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.RIGHT
-var fire_rate = 0.4
-var can_fire = true
-
-
-var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
 onready var hurtbox := $Hurtbox
 onready var knifeHitbox:= $Knife/Hitbox
@@ -26,25 +21,21 @@ onready var knifeHitbox:= $Knife/Hitbox
 func _ready():
 	PlayerStats.connect("no_health_player", self, "game_over")
 
-func _process(delta):
-	
+func _process(delta):	
 	#TODO: Remove this, and put in the real world scene
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 	
-	$Position2D/Gun.look_at(get_global_mouse_position())
 	$Knife.look_at(get_global_mouse_position())
 	if (get_global_mouse_position().x < $Position2D.global_position.x):
 		$Position2D/Body.flip_h = true
-		$Shadow.flip_h = true
-		$Position2D/Gun.flip_v = true
+		$Position2D/Gun/Gun.flip_v = true
 	else:
 		$Position2D/Body.flip_h = false
-		$Position2D/Gun.flip_v = false
-		$Shadow.flip_h = false
+		$Position2D/Gun/Gun.flip_v = false
 		
-	if Input.is_action_pressed("mouse_shoot") and can_fire:
-		fire()
+	if Input.is_action_pressed("mouse_shoot"):
+		$Position2D/Gun.fire()
 	
 	if Input.is_action_just_pressed("mouse_secondary"):
 		$AnimationPlayer.play("Knife_Attack")
@@ -77,26 +68,12 @@ func move_state(delta):
 	
 	move()
 	
-func dash_state(delta):
+func dash_state(_delta):
 	velocity = roll_vector * ROLL_SPEED
 	move()
 
 func move():
 	velocity = move_and_slide(velocity)
-
-
-func fire():
-	#$AnimationPlayer.play("Shoot")
-	var bullet = bullet_scene.instance()
-	get_parent().add_child(bullet)
-	bullet.global_position = $Position2D/Position.get_global_position()
-	var target = get_global_mouse_position()
-	var direction_to_mouse = bullet.global_position.direction_to(target).normalized()
-	bullet.direction = direction_to_mouse
-	bullet.rotation_degrees = $Position2D/Gun.rotation_degrees
-	can_fire = false
-	yield(get_tree().create_timer(fire_rate), "timeout")
-	can_fire = true
 	
 func game_over():
 	get_tree().change_scene("res://Scenes/Menu/gameover.tscn")

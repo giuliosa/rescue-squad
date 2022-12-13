@@ -8,7 +8,7 @@ func _physics_process(_delta):
 	pass
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://Scenes/TestScene.tscn")
+	get_tree().change_scene("res://Scenes/Tests/TestScene.tscn")
 
 
 func _on_ExitButton_pressed():
