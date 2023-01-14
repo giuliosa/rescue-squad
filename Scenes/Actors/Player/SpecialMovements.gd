@@ -22,13 +22,17 @@ func _process(delta):
 
 func fire():
 	#$AnimationPlayer.play("Shoot")
-	var bullet = bullet_scene.instance()
-	get_parent().add_child(bullet)
-	bullet.global_position = $Gun/Position.get_global_position()
-	var target = get_global_mouse_position()
-	var direction_to_mouse = bullet.global_position.direction_to(target).normalized()
-	bullet.direction = direction_to_mouse
-	bullet.rotation_degrees = $Gun.rotation_degrees
-	can_fire = false
-	yield(get_tree().create_timer(fire_rate), "timeout")
+	if(can_fire):
+		var bullet = bullet_scene.instance()
+		get_parent().add_child(bullet)
+		bullet.global_position = $Gun/Position.get_global_position()
+		var target = get_global_mouse_position()
+		var direction_to_mouse = bullet.global_position.direction_to(target).normalized()
+		bullet.direction = direction_to_mouse
+		bullet.rotation_degrees = $Gun.rotation_degrees
+		can_fire = false
+		$Timer.start(fire_rate)
+
+
+func _on_Timer_timeout():
 	can_fire = true

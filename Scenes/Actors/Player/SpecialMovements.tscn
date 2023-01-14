@@ -8,13 +8,16 @@ scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 2 )
 
 [node name="Gun" type="Sprite" parent="."]
-scale = Vector2( 1, 1 )
 offset = Vector2( 3.75, 0 )
 
 [node name="Position" type="Position2D" parent="Gun"]
-position = Vector2( -5.96046e-07, 0 )
 scale = Vector2( 1, 1 )
 __meta__ = {
-"_edit_group_": true,
 "_gizmo_extents_": 8.3
 }
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

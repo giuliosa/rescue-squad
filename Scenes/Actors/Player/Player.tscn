@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://Assets/Actor/Characters/Real-Soldier/soldier-v4.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Actors/Player/Soldier-anim.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Actor/Characters/Real-Soldier/gun-test.png" type="Texture" id=2]
 [ext_resource path="res://Assets/FX/shadow.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Actors/Player/Player.gd" type="Script" id=4]
@@ -20,6 +20,75 @@ height = 6.0
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 10.8975
 height = 18.0206
+
+[sub_resource type="Animation" id=13]
+resource_name = "Dash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "dash_animation_finished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "Knife_Attack"
@@ -61,6 +130,9 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "Lazy"
+
 [sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
@@ -99,6 +171,101 @@ tracks/2/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Body:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Dash"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/Dash/node = SubResource( 21 )
+states/Dash/position = Vector2( 392, -33 )
+states/Idle/node = SubResource( 17 )
+states/Idle/position = Vector2( 392, 56 )
+states/Run/node = SubResource( 18 )
+states/Run/position = Vector2( 569, 56 )
+transitions = [ "Run", "Idle", SubResource( 19 ), "Idle", "Run", SubResource( 20 ), "Dash", "Idle", SubResource( 22 ), "Idle", "Dash", SubResource( 23 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -53, -69 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 2
@@ -120,19 +287,24 @@ position = Vector2( 0, 1 )
 [node name="Body" type="Sprite" parent="Position2D"]
 position = Vector2( 1, -9 )
 texture = ExtResource( 1 )
+hframes = 4
+vframes = 6
 
-[node name="Gun" parent="Position2D" instance=ExtResource( 8 )]
+[node name="Weapon" parent="Position2D" instance=ExtResource( 8 )]
 position = Vector2( 9, -3 )
 
-[node name="Gun" parent="Position2D/Gun" index="0"]
+[node name="Gun" parent="Position2D/Weapon" index="0"]
+z_index = 8
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 4, 3 )
 rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2( 0, -14 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
@@ -140,13 +312,14 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [node name="Hurtbox" parent="." instance=ExtResource( 6 )]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = false
 position = Vector2( 4, -6 )
 shape = SubResource( 7 )
+disabled = true
 
 [node name="Knife" type="Sprite" parent="."]
 visible = false
@@ -166,11 +339,20 @@ shape = SubResource( 8 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Dash = SubResource( 13 )
+anims/Idle = SubResource( 14 )
 anims/Knife_Attack = SubResource( 9 )
+anims/Lazy = SubResource( 15 )
 anims/RESET = SubResource( 10 )
+anims/Run = SubResource( 16 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 11 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 12 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
-[editable path="Position2D/Gun"]
+[editable path="Position2D/Weapon"]
 [editable path="Hurtbox"]
 [editable path="Knife/Hitbox"]
