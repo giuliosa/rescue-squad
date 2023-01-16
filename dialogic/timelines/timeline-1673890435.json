@@ -1,0 +1,73 @@
+{
+	"events": [
+		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 1,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1673890421.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1673890421.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Chegamos no setor. Em alguns minutos pousaremos"
+		},
+		{
+			"character": "character-1673890421.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Como foi o [wave amp=50 freq=2]descanso?[/wave]"
+		},
+		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 1,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1673890289.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1673890289.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Normal. Pelo jeito a viagem foi tranquila..."
+		},
+		{
+			"character": "character-1673890421.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sim. O piloto não relatou nenhum perigo."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1673890435.json",
+		"name": "IntroScene"
+	}
+}
