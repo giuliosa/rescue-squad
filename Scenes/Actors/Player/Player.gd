@@ -13,7 +13,7 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
-var roll_vector = Vector2.RIGHT
+var roll_vector := Vector2.ZERO
 
 onready var hurtbox := $Hurtbox
 onready var knifeHitbox:= $Knife/Hitbox
@@ -26,7 +26,7 @@ func _ready():
 	PlayerStats.connect("no_health_player", self, "game_over")
 	animationTree.active = true
 
-func _process(delta):	
+func _process(_delta):	
 	#TODO: Remove this, and put in the real world scene
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -45,12 +45,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("mouse_secondary"):
 		$AnimationPlayer.play("Knife_Attack")
 		
-	if Input.is_action_just_pressed("special_move"):
+	if !animationState.get_current_node() == "Idle" && Input.is_action_just_pressed("special_move"):
 		state = DASH
 
-func _physics_process(delta):	
-	roll_vector = get_local_mouse_position().normalized()
-	knifeHitbox.knockback_vector = roll_vector
+func _physics_process(delta):
+	knifeHitbox.knockback_vector = get_local_mouse_position().normalized()
 	
 	match state:
 		MOVE:
@@ -65,6 +64,7 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
+		roll_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Dash/blend_position", input_vector)

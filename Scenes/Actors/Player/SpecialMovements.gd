@@ -1,6 +1,6 @@
 extends Sprite
 
-var fire_rate = 0.4
+var fire_rate = 0.8
 var can_fire = true
 
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
