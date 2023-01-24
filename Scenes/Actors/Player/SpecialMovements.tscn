@@ -9,11 +9,11 @@ scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 2 )
 
 [node name="Gun" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 1 )
 offset = Vector2( 3.75, 0 )
 hframes = 12
-frame = 7
+frame = 8
 
 [node name="Position" type="Position2D" parent="Gun"]
 __meta__ = {

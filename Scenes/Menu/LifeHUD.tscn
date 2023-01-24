@@ -1,118 +1,94 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Actor/Characters/Combat-medic/partner-face-v1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Actor/Characters/Real-Soldier/soldier-face-v1.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Menu/LifeHUD.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.411765, 0.74902, 0.121569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.180392, 0.839216, 0.870588, 1 )
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="LifeHUD" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="Player" type="Control" parent="."]
+[node name="Player" type="NinePatchRect" parent="."]
+anchor_left = 0.008
+anchor_top = 0.015
+anchor_right = 0.16
+anchor_bottom = 0.141
+margin_left = 0.24
+margin_top = -0.1
+margin_right = -0.200005
+margin_bottom = 0.0599976
+rect_pivot_offset = Vector2( 67, 78 )
 
-[node name="ColorRect" type="ColorRect" parent="Player"]
-margin_left = 35.0
-margin_top = 301.0
-margin_right = 120.0
-margin_bottom = 321.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Player"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="ColorRect2" type="ColorRect" parent="Player"]
-margin_left = 49.0
-margin_top = 304.0
-margin_right = 117.0
-margin_bottom = 318.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0, 0, 0, 1 )
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/VBoxContainer"]
+margin_right = 109.0
+margin_bottom = 25.0
 
-[node name="Life" type="ColorRect" parent="Player"]
-margin_left = 53.0
-margin_top = 306.0
-margin_right = 115.0
-margin_bottom = 316.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0.121569, 0.780392, 0.133333, 1 )
-
-[node name="ColorRect3" type="ColorRect" parent="Player"]
-margin_left = 35.0
-margin_top = 321.0
-margin_right = 120.0
-margin_bottom = 327.0
-
-[node name="ColorRect6" type="ColorRect" parent="Player"]
-margin_left = 43.0
-margin_top = 320.0
-margin_right = 117.0
-margin_bottom = 326.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="Stamina" type="ColorRect" parent="Player"]
-margin_left = 42.0
-margin_top = 322.0
-margin_right = 115.0
-margin_bottom = 324.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0.776471, 0.780392, 0.121569, 1 )
-
-[node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 30, 310 )
-scale = Vector2( 2, 2 )
+[node name="Icon" type="TextureRect" parent="Player/VBoxContainer/HBoxContainer"]
+margin_right = 29.0
+margin_bottom = 25.0
 texture = ExtResource( 2 )
 
-[node name="Partner" type="Control" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/VBoxContainer/HBoxContainer"]
+margin_left = 33.0
+margin_right = 109.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="Partner"]
-margin_left = 618.0
-margin_top = 302.0
-margin_right = 686.0
-margin_bottom = 322.0
+[node name="Life" type="ProgressBar" parent="Player/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 76.0
+margin_bottom = 10.0
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
 
-[node name="ColorRect5" type="ColorRect" parent="Partner"]
-margin_left = 620.0
-margin_top = 305.0
-margin_right = 683.0
-margin_bottom = 319.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0, 0, 0, 1 )
+[node name="Power" type="ProgressBar" parent="Player/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 14.0
+margin_right = 76.0
+margin_bottom = 25.0
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+percent_visible = false
 
-[node name="Life" type="ColorRect" parent="Partner"]
-margin_left = 493.0
-margin_top = 297.0
-margin_right = 550.0
-margin_bottom = 307.0
-rect_rotation = 180.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0.121569, 0.780392, 0.133333, 1 )
+[node name="AmmoContainer" type="HBoxContainer" parent="Player/VBoxContainer"]
+margin_top = 29.0
+margin_right = 109.0
+margin_bottom = 43.0
 
-[node name="ColorRect7" type="ColorRect" parent="Partner"]
-margin_left = 618.0
-margin_top = 322.0
-margin_right = 703.0
-margin_bottom = 328.0
-rect_rotation = -0.0406559
+[node name="AmmoLabel" type="Label" parent="Player/VBoxContainer/AmmoContainer"]
+margin_right = 47.0
+margin_bottom = 14.0
+text = "Ammo:"
 
-[node name="ColorRect8" type="ColorRect" parent="Partner"]
-margin_left = 619.993
-margin_top = 320.066
-margin_right = 697.993
-margin_bottom = 326.066
-rect_rotation = -0.0406559
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0, 0, 0, 1 )
+[node name="AmmoValue" type="Label" parent="Player/VBoxContainer/AmmoContainer"]
+margin_left = 51.0
+margin_right = 51.0
+margin_bottom = 14.0
 
-[node name="Stamina" type="ColorRect" parent="Partner"]
-margin_left = 509.0
-margin_top = 304.0
-margin_right = 582.0
-margin_bottom = 306.0
-rect_rotation = 180.0
-rect_pivot_offset = Vector2( 93, 10 )
-color = Color( 0.776471, 0.780392, 0.121569, 1 )
+[node name="AmmoDivider" type="Label" parent="Player/VBoxContainer/AmmoContainer"]
+margin_left = 55.0
+margin_right = 60.0
+margin_bottom = 14.0
+text = "/"
 
-[node name="Sprite2" type="Sprite" parent="Partner"]
-position = Vector2( 691, 310 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
-flip_h = true
+[node name="AmmoTotal" type="Label" parent="Player/VBoxContainer/AmmoContainer"]
+margin_left = 64.0
+margin_right = 64.0
+margin_bottom = 14.0

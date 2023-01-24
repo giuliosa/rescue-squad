@@ -25,11 +25,18 @@ func set_max_health_player(value):
 	self.health_player = min(health_player, max_health_player)
 	emit_signal("max_health_changed", max_health_player)
 
-func set_max_stamina_player(value):
-	pass
-	
 func set_stamina_player(value):
-	pass
+	stamina_player = value
+	emit_signal("stamina_changed", stamina_player)
+	if stamina_player <= 0:
+		emit_signal("no_stamina_player")
+
+func set_max_stamina_player(value):
+	max_stamina_player = value
+	self.stamina_player = min(stamina_player, max_stamina_player)
+	emit_signal("max_stamina_changed", max_stamina_player)
+	
+
 
 func _ready():
 	self.health_player = max_health_player

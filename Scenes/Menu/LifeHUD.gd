@@ -1,14 +1,14 @@
 extends CanvasLayer
 
+onready var life := $Player/VBoxContainer/HBoxContainer/VBoxContainer/Life
 
 func _ready():
-	PlayerStats.set_max_health_player($Player/Life.rect_size.x)
-	PlayerStats.set_health_player($Player/Life.rect_size.x)
-
-	PartnerStats.set_max_health_partner($Partner/Life.rect_size.x)
-	PartnerStats.set_health_partner($Partner/Life.rect_size.x)
+	PlayerStats.max_health_player = life.max_value
+	PlayerStats.health_player = PlayerStats.max_health_player
+	
+	pass
 	
 func _process(_delta):
-	$Player/Life.rect_size.x = PlayerStats.health_player
-	$Partner/Life.rect_size.x = PartnerStats.health_partner
+	life.value = PlayerStats.health_player
+	pass
 	

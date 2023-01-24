@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
 const ACCELERATION = 1000
-const MAX_SPEED = 150
-const ROLL_SPEED = MAX_SPEED * 3
 const FRICTION = 10000 
 
 enum {
@@ -10,6 +8,9 @@ enum {
 	DASH,
 	ATTACK
 }
+
+var max_speed = 150
+var roll_speed = max_speed * 3
 
 var state = MOVE
 var velocity = Vector2.ZERO
@@ -24,12 +25,13 @@ onready var animationState = animationTree.get("parameters/playback")
 func _ready():
 	randomize()
 	PlayerStats.connect("no_health_player", self, "game_over")
+	PlayerStats.connect("stamina_changed", self, "stamina_recover")
 	animationTree.active = true
 
 func _process(_delta):	
-	#TODO: Remove this, and put in the real world scene
+	#TODO: Remove this, and put to open the menu
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		get_tree().change_scene("res://Scenes/Menu/TitleScreen.tscn")
 	
 	$Knife.look_at(get_global_mouse_position())
 	if (get_global_mouse_position().x < $Position2D.global_position.x):
@@ -44,6 +46,13 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("mouse_secondary"):
 		$AnimationPlayer.play("Knife_Attack")
+		
+	if Input.is_action_just_pressed("slow_time"):
+		#Make this more dinamic
+		max_speed = 900
+		$SlowTime.start(2, 0.7)
+	else:
+		max_speed = 150
 		
 	if !animationState.get_current_node() == "Idle" && Input.is_action_just_pressed("special_move"):
 		state = DASH
@@ -69,7 +78,7 @@ func move_state(delta):
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Dash/blend_position", input_vector)
 		animationState.travel("Run")
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		velocity = velocity.move_toward(input_vector * max_speed, ACCELERATION * delta)
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -77,7 +86,8 @@ func move_state(delta):
 	move()
 	
 func dash_state(_delta):
-	velocity = roll_vector * ROLL_SPEED
+	PlayerStats.stamina_player -= 1
+	velocity = roll_vector * roll_speed
 	animationState.travel("Dash")
 	move()
 
@@ -92,8 +102,18 @@ func _on_GunShoot_animation_finished():
 
 func dash_animation_finished():
 	state = MOVE
+	
+func stamina_recover():
+	$StaminaRecover.start()
+	
 
 func _on_Hurtbox_area_entered(area):
 	PlayerStats.health_player -= area.damage
 	hurtbox.start_invicibility(0.6)
 	hurtbox.create_hit_effect()
+
+
+
+func _on_StaminaRecover_timeout():
+	#TODO: Fix stamina recover
+	PlayerStats.health_player += 1

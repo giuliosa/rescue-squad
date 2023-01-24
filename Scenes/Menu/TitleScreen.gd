@@ -5,7 +5,8 @@ func _ready():
 	$Sprite/MarginContainer/VBoxContainer/VBoxContainer/StartButton.grab_focus()
 
 func _physics_process(_delta):
-	pass
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _on_StartButton_pressed():
 	get_tree().change_scene("res://Scenes/Tests/TestScene.tscn")

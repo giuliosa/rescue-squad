@@ -1,27 +1,33 @@
 extends Sprite
 
-var fire_rate = 0.8
+var fire_rate = 0.5
 var can_fire = true
+
 
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
-onready var weapon := $Gun
+onready var gun := $Gun
 
 func _ready():
+	AmmoStats.max_ammo = 6
 	pass
 
 
 func _process(delta):
-	weapon.look_at(get_global_mouse_position())
-	#$Knife.look_at(get_global_mouse_position())
-	# if (get_global_mouse_position().x < $Position2D.global_position.x):
-	# 	$Gun.flip_v = true
-	# else:
-	# 	$Gun.flip_v = false
+	gun.look_at(get_global_mouse_position())
+	
+	if Input.is_action_just_pressed("weapon_one"):
+		gun.frame = 6
+		fire_rate = 0.7
+	if Input.is_action_just_pressed("weapon_two"):
+		gun.frame = 7
+		fire_rate = 0.5
+	if Input.is_action_just_pressed("weapon_three"):
+		gun.frame = 8
+		fire_rate = 0.3
 
 
 func fire():
-	#$AnimationPlayer.play("Shoot")
 	if(can_fire):
 		var bullet = bullet_scene.instance()
 		get_parent().add_child(bullet)
@@ -29,7 +35,7 @@ func fire():
 		var target = get_global_mouse_position()
 		var direction_to_mouse = bullet.global_position.direction_to(target).normalized()
 		bullet.direction = direction_to_mouse
-		bullet.rotation_degrees = $Gun.rotation_degrees
+		bullet.rotation_degrees = gun.rotation_degrees
 		can_fire = false
 		$Timer.start(fire_rate)
 

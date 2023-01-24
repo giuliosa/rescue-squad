@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/Actors/Player/Soldier-anim.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Actors/Player/SlowTime.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/FX/shadow.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Actors/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Overlap/Hitbox.tscn" type="PackedScene" id=5]
@@ -278,7 +279,7 @@ __meta__ = {
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0.262745, 0.247059, 0.266667, 0.227451 )
-position = Vector2( 5, -4 )
+position = Vector2( 1, -4 )
 scale = Vector2( 1.625, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -0.615385, 5 )
@@ -287,8 +288,9 @@ offset = Vector2( -0.615385, 5 )
 position = Vector2( 0, 1 )
 
 [node name="Body" type="Sprite" parent="Position2D"]
-position = Vector2( 1, -9 )
+position = Vector2( 0, -1 )
 texture = ExtResource( 1 )
+offset = Vector2( -3, -8 )
 hframes = 4
 vframes = 6
 
@@ -296,9 +298,9 @@ vframes = 6
 position = Vector2( 9, -3 )
 
 [node name="Gun" parent="Position2D/Weapon" index="0"]
-position = Vector2( -5, -2.5 )
+position = Vector2( -11.25, -2.5 )
 z_index = 8
-offset = Vector2( 36.25, 0 )
+offset = Vector2( 30.8929, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -354,7 +356,13 @@ tree_root = SubResource( 11 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 12 )
 
+[node name="StaminaRecover" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="SlowTime" parent="." instance=ExtResource( 2 )]
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="timeout" from="StaminaRecover" to="." method="_on_StaminaRecover_timeout"]
 
 [editable path="Position2D/Weapon"]
 [editable path="Hurtbox"]
