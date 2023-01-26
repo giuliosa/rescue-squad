@@ -7,10 +7,11 @@ var can_fire = true
 var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
 onready var gun := $Gun
+onready var powerTimer := $PowerTimer
 
 func _ready():
 	AmmoStats.max_ammo = 6
-	pass
+	powerTimer.start()	
 
 
 func _process(delta):
@@ -42,3 +43,8 @@ func fire():
 
 func _on_Timer_timeout():
 	can_fire = true
+
+
+func _on_PowerTimer_timeout():
+	if PlayerStats.stamina_player < PlayerStats.max_stamina_player:
+		PlayerStats.stamina_player += 1

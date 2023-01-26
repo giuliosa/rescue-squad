@@ -356,13 +356,9 @@ tree_root = SubResource( 11 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 12 )
 
-[node name="StaminaRecover" type="Timer" parent="."]
-wait_time = 0.3
-
 [node name="SlowTime" parent="." instance=ExtResource( 2 )]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-[connection signal="timeout" from="StaminaRecover" to="." method="_on_StaminaRecover_timeout"]
 
 [editable path="Position2D/Weapon"]
 [editable path="Hurtbox"]

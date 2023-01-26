@@ -24,4 +24,8 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="PowerTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="PowerTimer" to="." method="_on_PowerTimer_timeout"]

@@ -10,7 +10,7 @@ enum {
 }
 
 var max_speed = 150
-var roll_speed = max_speed * 3
+var roll_speed = max_speed * 2
 
 var state = MOVE
 var velocity = Vector2.ZERO
@@ -47,10 +47,11 @@ func _process(_delta):
 	if Input.is_action_just_pressed("mouse_secondary"):
 		$AnimationPlayer.play("Knife_Attack")
 		
-	if Input.is_action_just_pressed("slow_time"):
+	if Input.is_action_just_pressed("slow_time") && PlayerStats.stamina_player >= 2:
 		#Make this more dinamic
 		max_speed = 900
 		$SlowTime.start(2, 0.7)
+		PlayerStats.stamina_player -=2
 	else:
 		max_speed = 150
 		
@@ -86,7 +87,6 @@ func move_state(delta):
 	move()
 	
 func dash_state(_delta):
-	PlayerStats.stamina_player -= 1
 	velocity = roll_vector * roll_speed
 	animationState.travel("Dash")
 	move()
@@ -112,8 +112,3 @@ func _on_Hurtbox_area_entered(area):
 	hurtbox.start_invicibility(0.6)
 	hurtbox.create_hit_effect()
 
-
-
-func _on_StaminaRecover_timeout():
-	#TODO: Fix stamina recover
-	PlayerStats.health_player += 1
