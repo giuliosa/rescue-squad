@@ -210,7 +210,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "Run"
-length = 0.8
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Body:frame")
@@ -219,7 +219,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"times": PoolRealArray( 0, 0.0609025, 0.120936, 0.181404, 0.242741, 0.301037, 0.361071, 0.441957 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
@@ -312,7 +312,6 @@ shape = SubResource( 6 )
 visible = false
 position = Vector2( 0, -14 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 

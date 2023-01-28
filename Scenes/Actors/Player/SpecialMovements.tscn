@@ -13,7 +13,7 @@ scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 1 )
 offset = Vector2( 3.75, 0 )
 hframes = 12
-frame = 8
+frame = 7
 
 [node name="Position" type="Position2D" parent="Gun"]
 __meta__ = {
@@ -21,11 +21,13 @@ __meta__ = {
 }
 
 [node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="PowerTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="PowerTimer" to="." method="_on_PowerTimer_timeout"]

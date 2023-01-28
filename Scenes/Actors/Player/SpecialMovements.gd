@@ -8,40 +8,24 @@ var bullet_scene = preload("res://Scenes/Overlap/Bullet.tscn")
 
 onready var gun := $Gun
 onready var powerTimer := $PowerTimer
+onready var reload_timer := $ReloadTimer
 
 func _ready():
-	AmmoStats.max_ammo = 6
-	gun.frame = 0
-	fire_rate = 0.3
+	PlayerStats.ammo_player = 7
+	
 	powerTimer.start()
+	
+	PlayerStats.connect("no_ammo_player", self, "reaload_ammo")
 
 
 func _process(delta):
 	gun.look_at(get_global_mouse_position())
-	
-	if Input.is_action_just_pressed("weapon_three"):
-		gun.frame = 10
-		fire_rate = 1.5
-	if Input.is_action_just_pressed("weapon_two"):
-		gun.frame = 8
-		fire_rate = 0.5
-	if Input.is_action_just_pressed("weapon_one"):
-		gun.frame = 0
-		fire_rate = 0.3
 
 
 func fire():
-	if(can_fire):
+	if(can_fire and PlayerStats.ammo_player > 0):
+		PlayerStats.ammo_player -= 1
 		var bullet = bullet_scene.instance()
-		
-		match gun.frame:
-			10:
-				bullet.damage = 5
-			8: 
-				bullet.damage = 3
-			0:
-				bullet.damage = 2
-		
 		get_parent().add_child(bullet)
 		bullet.global_position = $Gun/Position.get_global_position()
 		var target = get_global_mouse_position()
@@ -59,3 +43,14 @@ func _on_Timer_timeout():
 func _on_PowerTimer_timeout():
 	if PlayerStats.stamina_player < PlayerStats.max_stamina_player:
 		PlayerStats.stamina_player += 1
+
+
+func reaload_ammo():
+	can_fire = false
+	reload_timer.start()
+
+
+func _on_ReloadTimer_timeout():
+	PlayerStats.ammo_player = 7
+	reload_timer.stop()
+	can_fire = true

@@ -9,7 +9,7 @@ enum {
 	ATTACK
 }
 
-var max_speed = 150
+var max_speed = 180
 var roll_speed = max_speed * 2
 
 var state = MOVE
@@ -109,6 +109,8 @@ func stamina_recover():
 
 func _on_Hurtbox_area_entered(area):
 	PlayerStats.health_player -= area.damage
+	$SlowTime.start(0.3, 0.7)
 	hurtbox.start_invicibility(0.6)
 	hurtbox.create_hit_effect()
+	
 
