@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Actors/Partner.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Actors/Partner/Partner.gd" type="Script" id=1]
 [ext_resource path="res://Assets/FX/shadow.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Actor/Characters/Nanotech/Nanotech-char.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Actor/Characters/Nanotech/Nanotech-sphere.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Actors/Characters/Nanotech/Nanotech-char.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Actors/Characters/Nanotech/Nanotech-sphere.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Overlap/Hurtbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=2]

@@ -9,7 +9,7 @@ func _physics_process(_delta):
 		get_tree().quit()
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://Scenes/Tests/TestScene.tscn")
+	get_tree().change_scene("res://Scenes/Loading.tscn")
 
 
 func _on_ExitButton_pressed():

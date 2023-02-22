@@ -100,18 +100,18 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerStats="*res://Scenes/Actors/Player/PlayerStats.tscn"
-PartnerStats="*res://Scenes/Actors/PartnerStats.tscn"
+PlayerStats="*res://Scenes/Actors/Player/Stats/PlayerStats.tscn"
+PartnerStats="*res://Scenes/Actors/Partner/PartnerStats.tscn"
 AmmoStats="*res://Scenes/AmmoStats.tscn"
 
 [display]
 
-window/size/width=720
-window/size/height=340
+window/size/width=960
+window/size/height=540
 window/size/resizable=false
 window/size/fullscreen=true
 window/size/test_width=1280
-window/size/test_height=680
+window/size/test_height=1080
 mouse_cursor/custom_image="res://Assets/Hud/aim2.1.png"
 mouse_cursor/custom_image_hotspot=Vector2( 16, 16 )
 window/stretch/mode="2d"

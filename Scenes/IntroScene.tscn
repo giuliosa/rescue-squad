@@ -1,10 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/IntroScene.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Items/TempShip/frames/vehicle-2-1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Items/TempShip/frames/vehicle-2-3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Items/TempShip/frames/vehicle-2-2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Background/ExK_p7wVoAg_Rij.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 8.0
+} ]
 
 [node name="IntroScene" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 960.0
+margin_bottom = 540.0
+texture = ExtResource( 6 )
+expand = true
+flip_h = true
+flip_v = true
+
 [node name="Dialog" parent="." instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 0.0
 timeline = "timeline-1673890435.json"
+
+[node name="Ship" type="AnimatedSprite" parent="."]
+position = Vector2( 463, 183 )
+scale = Vector2( 1.66, 1.66 )
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 1
+playing = true

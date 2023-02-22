@@ -1,68 +1,26 @@
 {
 	"events": [
 		{
-			"animation": "2-fade_in_up.gd",
-			"animation_length": 1,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
-			"character": "character-1673890421.json",
-			"event_id": "dialogic_002",
-			"mirror_portrait": false,
-			"portrait": "Default",
-			"portrait_definition": "",
-			"position": {
-				"0": false,
-				"1": false,
-				"2": false,
-				"3": false,
-				"4": true
-			},
-			"type": 0,
-			"z_index": 0
-		},
-		{
-			"character": "character-1673890421.json",
+			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Chegamos no setor. Em alguns minutos pousaremos"
+			"text": "This version is a prototype. Any feedback, you can leave a comment"
 		},
 		{
-			"character": "character-1673890421.json",
+			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Como foi o [wave amp=50 freq=2]descanso?[/wave]"
+			"text": "WASD - Movement\nShift - Dash\nRigh button of mouse - Shoot\nLeft button of mouse -Melee attack\nQ - Special Movement"
 		},
 		{
-			"animation": "2-fade_in_up.gd",
-			"animation_length": 1,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
-			"character": "character-1673890289.json",
-			"event_id": "dialogic_002",
-			"mirror_portrait": false,
-			"portrait": "Default",
-			"portrait_definition": "",
-			"position": {
-				"0": true,
-				"1": false,
-				"2": false,
-				"3": false,
-				"4": false
-			},
-			"type": 0,
-			"z_index": 0
-		},
-		{
-			"character": "character-1673890289.json",
+			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Normal. Pelo jeito a viagem foi tranquila..."
+			"text": "Have fun"
 		},
 		{
-			"character": "character-1673890421.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Sim. O piloto não relatou nenhum perigo."
+			"change_scene": "res://Scenes/Tests/TestScene.tscn",
+			"event_id": "dialogic_041"
 		}
 	],
 	"metadata": {

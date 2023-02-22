@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Assets/Actor/Monsters/Cyclopes.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Actors/Monsters/Cyclopes.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Overlap/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Overlap/PlayerDetectionZone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Overlap/Hitbox.tscn" type="PackedScene" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Stats.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Ciclope.gd" type="Script" id=8]
 [ext_resource path="res://Assets/FX/light.png" type="Texture" id=9]
+
 
 [sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;

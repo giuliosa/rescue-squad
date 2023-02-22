@@ -1,20 +1,21 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://Scenes/Actors/Player/Soldier-anim.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Actors/Player/SlowTime.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Actors/Characters/InfantrySoldier/Soldier-anim.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Effects/SlowTime.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/FX/shadow.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Actors/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Overlap/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Overlap/Hurtbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/FX/6.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Actors/Player/SpecialMovements.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Actors/Characters/InfantrySoldier/soldier-v5.2.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 2.99999
 height = 12.0
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 9.0
+radius = 7.0
 height = 6.0
 
 [sub_resource type="CapsuleShape2D" id=8]
@@ -269,7 +270,7 @@ graph_offset = Vector2( -53, -69 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 4 )
@@ -303,8 +304,7 @@ z_index = 8
 offset = Vector2( 30.8929, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 4, 3 )
+position = Vector2( 0, 3 )
 rotation = 1.5708
 shape = SubResource( 6 )
 
@@ -312,16 +312,14 @@ shape = SubResource( 6 )
 visible = false
 position = Vector2( 0, -14 )
 current = true
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 6 )]
-visible = false
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( 4, -6 )
+position = Vector2( 0, -6 )
 shape = SubResource( 7 )
 disabled = true
 
@@ -356,6 +354,11 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 12 )
 
 [node name="SlowTime" parent="." instance=ExtResource( 2 )]
+
+[node name="Soldier-v52" type="Sprite" parent="."]
+visible = false
+position = Vector2( -31, -11 )
+texture = ExtResource( 9 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

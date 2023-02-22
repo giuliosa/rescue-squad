@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Actor/Characters/Real-Soldier/soldier-face-v1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Actors/Characters/InfantrySoldier/soldier-face-v1.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Menu/LifeHUD.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -41,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player/VBoxContainer"]
-margin_right = 108.0
+margin_right = 145.0
 margin_bottom = 25.0
 
 [node name="Icon" type="TextureRect" parent="Player/VBoxContainer/HBoxContainer"]
@@ -51,13 +51,13 @@ texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player/VBoxContainer/HBoxContainer"]
 margin_left = 33.0
-margin_right = 108.0
+margin_right = 145.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Life" type="ProgressBar" parent="Player/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 75.0
+margin_right = 112.0
 margin_bottom = 5.0
 size_flags_vertical = 3
 custom_styles/fg = SubResource( 1 )
@@ -66,7 +66,7 @@ percent_visible = false
 
 [node name="Power" type="ProgressBar" parent="Player/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 9.0
-margin_right = 75.0
+margin_right = 112.0
 margin_bottom = 15.0
 size_flags_vertical = 3
 custom_styles/fg = SubResource( 3 )
@@ -76,7 +76,7 @@ percent_visible = false
 
 [node name="Ammo" type="ProgressBar" parent="Player/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 19.0
-margin_right = 75.0
+margin_right = 112.0
 margin_bottom = 25.0
 size_flags_vertical = 3
 custom_styles/fg = SubResource( 5 )

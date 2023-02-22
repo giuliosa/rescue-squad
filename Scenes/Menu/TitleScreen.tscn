@@ -25,17 +25,17 @@ font_data = ExtResource( 3 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 358.499, 170.5 )
-scale = Vector2( 0.753127, 0.624074 )
+position = Vector2( 478.499, 270 )
+scale = Vector2( 1.00313, 0.992593 )
 texture = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Sprite"]
 anchor_right = 2.008
 anchor_bottom = 1.99
-margin_left = -481.49
-margin_top = -272.243
-margin_right = -1449.17
-margin_bottom = -806.843
+margin_left = -481.0
+margin_top = -272.0
+margin_right = -1448.68
+margin_bottom = -809.6
 custom_constants/margin_top = 100
 custom_constants/margin_bottom = 100
 
@@ -43,7 +43,7 @@ custom_constants/margin_bottom = 100
 margin_left = 244.0
 margin_top = 100.0
 margin_right = 715.0
-margin_bottom = 440.0
+margin_bottom = 437.0
 size_flags_horizontal = 4
 custom_constants/separation = 16
 
@@ -59,15 +59,15 @@ uppercase = true
 [node name="VBoxContainer" type="VBoxContainer" parent="Sprite/MarginContainer/VBoxContainer"]
 margin_top = 163.0
 margin_right = 471.0
-margin_bottom = 340.0
+margin_bottom = 337.0
 size_flags_vertical = 3
 custom_constants/separation = 16
 alignment = 2
 
 [node name="StartButton" type="Button" parent="Sprite/MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 132.0
+margin_top = 129.0
 margin_right = 471.0
-margin_bottom = 177.0
+margin_bottom = 174.0
 custom_fonts/font = SubResource( 2 )
 text = "Press Start"
 flat = true
@@ -80,6 +80,13 @@ margin_bottom = 177.0
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
 flat = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 856.0
+margin_top = 514.0
+margin_right = 949.0
+margin_bottom = 528.0
+text = "Prototype v0.2"
 
 [connection signal="pressed" from="Sprite/MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Sprite/MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
