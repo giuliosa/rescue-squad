@@ -10,7 +10,6 @@
 [ext_resource path="res://Scenes/Actors/Enemies/Minions/Ciclope.gd" type="Script" id=8]
 [ext_resource path="res://Assets/FX/light.png" type="Texture" id=9]
 
-
 [sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;
 

@@ -297,6 +297,7 @@ vframes = 6
 
 [node name="Weapon" parent="Position2D" instance=ExtResource( 8 )]
 position = Vector2( 9, -3 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Gun" parent="Position2D/Weapon" index="0"]
 position = Vector2( -11.25, -2.5 )
