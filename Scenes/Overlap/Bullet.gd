@@ -1,8 +1,9 @@
 extends Area2D
 
-
 const SPEED = 1000
 var direction = Vector2()
+var damage = 2
+var knockback_vector = Vector2.ZERO
 
 func _process(delta):
 	translate(direction.normalized() * SPEED * delta)

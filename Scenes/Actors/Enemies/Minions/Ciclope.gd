@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Monster
+
 const EnemyDeathEffect = preload("res://Scenes/Effects/EnemyDeathEffect.tscn")
 
 export var ACCELERATION = 300
@@ -67,6 +69,8 @@ func _physics_process(delta):
 		velocity += softCollision.get_push_vector() * delta * 400
 	
 	velocity = move_and_slide(velocity)
+	
+	
 func accelerate_towards_point(position, delta):
 	var direction = global_position.direction_to(position) 
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
@@ -84,18 +88,15 @@ func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
 
+
 func _on_Hurtbox_area_entered(area):
-	if(area.shoot_type):
-		match(area.shoot_type):
-			'soldier':
-				stats.health -= area.damage * 2
-			_:
-				stats.health -= area.damage
-	knockback = area.knockback_vector * 60
-	hurtbox.create_hit_effect()
-	hurtbox.start_invicibility(0.4)	
-
-
+	if (area.name == "Bullet" or area.name == "Hitbox"):
+		stats.health -= area.damage
+		knockback = area.knockback_vector * 200
+		hurtbox.create_hit_effect()
+		hurtbox.start_invicibility(0.4)
+		
+	
 func _on_Stats_no_health():
 	queue_free()
 	var enemyDeathEffect = EnemyDeathEffect.instance()

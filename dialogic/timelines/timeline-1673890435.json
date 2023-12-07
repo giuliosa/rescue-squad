@@ -1,0 +1,31 @@
+{
+	"events": [
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This version is a prototype. Any feedback, you can leave a comment"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "WASD - Movement\nShift - Dash\nRigh button of mouse - Shoot\nLeft button of mouse -Melee attack\nQ - Special Movement"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Have fun"
+		},
+		{
+			"change_scene": "res://Scenes/Tests/TestScene.tscn",
+			"event_id": "dialogic_041"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1673890435.json",
+		"name": "IntroScene"
+	}
+}
